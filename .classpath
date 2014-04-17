@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/json"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/ehcache-1.2.3.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/hibernate3.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/hibernate-cglib-repack-2.1_3.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/hibernate-entitymanager.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/log4j.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/slf4j-api-1.5.2.jar"/>
+	<classpathentry kind="lib" path="H:/jars/hibernateOrJPA/hibernateOrJPA/slf4j-log4j12.jar"/>
+	<classpathentry kind="lib" path="H:/jars/c3p0-0.9.0.jar"/>
+	<classpathentry kind="lib" path="H:/jars/jacob.jar"/>
+	<classpathentry kind="lib" path="H:/jars/jspSmartUpload_supportZH.jar"/>
+	<classpathentry kind="lib" path="H:/jars/jxl.jar"/>
+	<classpathentry kind="lib" path="H:/jars/mysql-connector-java-6.0.6-bin.jar"/>
+	<classpathentry kind="lib" path="H:/jars/pinyin4j-2.5.0.jar"/>
+	<classpathentry kind="lib" path="H:/jars/poi-ooxml-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="H:/jars/json jar/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="H:/jars/json jar/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="H:/jars/json jar/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="H:/jars/json jar/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="H:/jars/json jar/ezmorph-1.0.3.jar"/>
+	<classpathentry kind="lib" path="H:/jars/json jar/json-lib-2.4-jdk15.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>
