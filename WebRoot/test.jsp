@@ -8,7 +8,6 @@
 	Sample sample = new Sample();
 	request.setAttribute("sampleid","sampleid");
 	int sampleID=1;
-int a= 2;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
