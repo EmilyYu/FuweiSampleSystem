@@ -19,8 +19,9 @@
 		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<!--web字体-->
 		<link href="css/index.css" rel="stylesheet" type="text/css" />
-
+		<script src="js/common.js" type="text/javascript"></script>
 		<script src="js/index.js" type="text/javascript"></script>
+		
 	</head>
 
 	<div style="display: none;" class="background"></div>
@@ -104,6 +105,9 @@
 				<li class="li_dropdown">
 					<a href="#"><i class="fa fa-paperclip"></i>订单系统<i class="fa fa-angle-down"></i></a>
 					<ul class="submenu">
+						<li>
+							<a href="addOrder.jsp"><i class="fa fa-plus"></i>创建订单</a>
+						</li>
 						<li>
 							<a href="addproductNotification.jsp"><i class="fa fa-plus"></i>创建生产通知单</a>
 						</li>

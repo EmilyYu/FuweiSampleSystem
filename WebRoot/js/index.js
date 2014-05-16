@@ -1,5 +1,7 @@
 $(document).ready(function() {
-	$("#left").height(document.body.clientHeight-$("#left").offset().top);
+	var height = Math.max(Common.getClientHeight(),$("#left").height());
+	//$("#left").height(document.body.clientHeight-$("#left").offset().top);
+	$("#left").height(height);
     /*左侧栏 样式相关js*/
 	//设置左边栏的选中项
 	var pathname = location.pathname;

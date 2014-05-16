@@ -40,5 +40,7 @@
 	<mapping class="com.fuwei.entity.UnPricedSample"/>
 	<mapping class="com.fuwei.entity.FWUser"/>
 	<mapping class="com.fuwei.entity.FWOrder"/>
+	<mapping class="com.fuwei.entity.SamplePrice"/>
+	<mapping class="com.fuwei.entity.OrderStatus"/>
 </session-factory>
 </hibernate-configuration>

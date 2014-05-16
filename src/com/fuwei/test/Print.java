@@ -17,7 +17,7 @@ public class Print {
 	 * @param copies 打印份数
 	 */
 	public static void printExcel(String path,int copies){
-		if(path.isEmpty()||copies<1){
+		if(path.length() <= 0||copies<1){
 			return;
 		}
 		//初始化COM线程

@@ -69,6 +69,27 @@ Common.urlParams = function(url) {
 };
 //获取url的中的参数
 
+Common.getClientHeight =function() {
+    //可见高
+    var clientHeight = document.documentElement.clientHeight; //其它浏览器默认值
+    if (navigator.userAgent.indexOf("MSIE 6.0") != -1) {
+        clientHeight = document.documentElement.clientHeight;
+    }
+    else if (navigator.userAgent.indexOf("MSIE") != -1) {
+        //IE7 IE8
+        clientHeight = document.documentElement.offsetHeight;
+    }
+
+    if (navigator.userAgent.indexOf("Chrome") != -1) {
+        clientHeight = document.documentElement.clientHeight;
+    }
+
+    if (navigator.userAgent.indexOf("Firefox") != -1) {
+        clientHeight = document.documentElement.clientHeight;
+    }
+    return clientHeight;
+};
+
 /*验证相关*/
 function checkform(formEle){
 	var requireles = $(formEle).find(".require");
@@ -162,11 +183,35 @@ $(document).ready(function(){
     });
     //表格样式
     
-  //关闭编辑box按钮 -- 开始
+    //关闭编辑box按钮 -- 开始
     $("#Cancel").click(function() {
         $(this).closest(".dialog").hide();
     });
     //关闭编辑box按钮 -- 结束
     
+    $("input[tip],textarea[tip]").bind("focus click", function() {
+        var tip = $(this).attr("tip");
+        if (this.value == tip) {
+            this.value = "";
+            $(this).removeClass('tip');
+        }
+    });
+    $("input[tip],textarea[tip]").bind("blur", function() {
+        var tip = $(this).attr("tip");
+        if (this.value == "") {
+            this.value = tip;
+            $(this).addClass('tip');
+        }
+    });
+    
+    //绑定时间插件
+    $("input.wdatepicker").focus(function() {
+        WdatePicker();
+    });
+    $("input.wdatepicker").click(function() {
+        WdatePicker();
+    });
+
 });
 /*验证相关*/
+

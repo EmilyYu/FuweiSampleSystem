@@ -32,13 +32,13 @@ public class AddOrderService extends HttpServlet {
 				String developer=req.getParameter("developer");
 				String note=req.getParameter("note");
 				FWOrder order=new FWOrder();
-				order.setCompanyName(companyName);
-				order.setCompanyOrderNumber(companyOrderNumber);
-				order.setDeveloper(developer);
-				order.setFwOrderNumber("");
-				order.setNote(note);
-				order.setOrderTime(orderTime);
-				order.setSalesManName(salesMan);
+//				order.setCompanyName(companyName);
+//				order.setCompanyOrderNumber(companyOrderNumber);
+//				order.setDeveloper(developer);
+//				order.setFwOrderNumber("");
+//				order.setNote(note);
+//				order.setOrderTime(orderTime);
+//				order.setSalesManName(salesMan);
 				FWOrderDAO orderDAO=new FWOrderDAO();
 				orderDAO.addFWOrder(order);
 			}else {

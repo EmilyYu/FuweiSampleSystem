@@ -611,5 +611,10 @@ position: relative;
  	display:none;
  }
   /*导航条*/
+.submenu li.active a{
+	font-weight: bold;
+	color: #438eb9;
+	font-size: 15px;
+}
  /*FuWei添加样式*/
 

@@ -99,7 +99,6 @@
 								String salesmanname = key_split[1];
 								List<TransQuotation> transQuotationgroup=quotations.get(key);
 							%>
-							<tr></tr>
 							<tr class="package_head" companyname="<%= companyname%>" salesmanname="<%= salesmanname%>"><td colspan="9"><input type="checkbox" class="checkgroup" />
 								<i class="icon-home home-icon"></i>公司：<%= companyname%>
 								<i class="fa fa-user"></i>业务员：<%= salesmanname%>
