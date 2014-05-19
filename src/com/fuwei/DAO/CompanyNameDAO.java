@@ -5,14 +5,14 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.fuwei.entity.CompanyName;
+import com.fuwei.entity.Company;
 import com.fuwei.util.HibernateUtil;
 
 public class CompanyNameDAO {
 	private Session session;
 	public CompanyNameDAO() {}
 	
-	public int addCompanyName(CompanyName companyName){
+	public int addCompanyName(Company companyName){
 		try {
 			session=HibernateUtil.getSession();
 			Transaction transaction=session.beginTransaction();
@@ -26,10 +26,10 @@ public class CompanyNameDAO {
 		}
 	}
 	
-	public CompanyName getCompanyNameById(int id){
+	public Company getCompanyNameById(int id){
 		session=HibernateUtil.getSession();
 		Transaction transaction=session.beginTransaction();
-		CompanyName companyName=(CompanyName)session.get(CompanyName.class, id);
+		Company companyName=(Company)session.get(Company.class, id);
 		transaction.commit();
 		session.close();
 		return companyName;

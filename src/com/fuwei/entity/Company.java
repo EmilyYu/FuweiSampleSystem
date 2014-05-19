@@ -5,10 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/*公司类*/
 @Entity
-public class CompanyName {
+public class Company {
 	private String address;
-	private String companyName;
+	private String name;
 	private String destination;
 	private int id;
 	private String jianChen;
@@ -16,8 +17,12 @@ public class CompanyName {
 	public String getAddress() {
 		return address;
 	}
-	public String getCompanyName() {
-		return companyName;
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getDestination() {
 		return destination;
@@ -36,9 +41,7 @@ public class CompanyName {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
+	
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}

@@ -3,19 +3,19 @@
 <%@page import="com.fuwei.entity.Sample"%>
 <%@page import="com.fuwei.util.FuweiSystemData"%>
 <%@page import="com.fuwei.entity.CompanyPrice"%>
-<%@page import="com.fuwei.entity.CompanyName"%>
+<%@page import="com.fuwei.entity.Company"%>
 <%@page import="net.sf.json.JSONObject"%>
 <%@page import="com.fuwei.util.DateFormateUtil"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
 	Sample sample = (Sample) request.getAttribute("sample");
 	System.out.println("dsadas2:"+sample.toString());
 	List<CompanyPrice> companyPrices = (List<CompanyPrice>) request.getAttribute("companys");
 	System.out.println("dsadas2:"+companyPrices.size());
-	List<CompanyName> companyList=FuweiSystemData.getCompanyNameList();
+	List<Company> companyList=FuweiSystemData.getCompanyNameList();
 	HashMap<String, List<String>> SalesNameByCompanyNameList = FuweiSystemData.getSalesNameByCompanyName();
 	JSONObject jObject = new JSONObject();
 	jObject.put("SalesNameByCompanyName", SalesNameByCompanyNameList);
@@ -55,7 +55,7 @@
 		<div class="detail_widget">
 			<form id="batchform" name="batchform"
 				action="createSampleSignServlet.do" method="post">
-				<input type="hidden" id="id" name="id" value="<%=sample.getId() %>" />
+				<input type="hidden" id="id" name="id" value="<%=sample.getId()%>" />
 				<input type="hidden" id="type" name="type" value="sample" /> <input
 					type="submit" id="batch_create" value="生成样品标签" />
 			</form>
@@ -97,8 +97,14 @@
 						<li><span class="li_name">基础价格</span>
 						<div class="li_value_div">
 								<span class="li_value">
-									<%if(3!=user.getAuthority()){ %><%=sample.getCost()%>&nbsp;&nbsp;元<%}else{ %><%="不可见" %>
-									<%} %>
+									<%
+										if(3!=user.getAuthority()){
+									%><%=sample.getCost()%>&nbsp;&nbsp;元<%
+										}else{
+									%><%="不可见"%>
+									<%
+										}
+									%>
 								</span>
 							</div></li>
 						<li><span class="li_name">录入时间</span>
@@ -108,7 +114,9 @@
 
 					</ul>
 				</div>
-				<%if(3!=user.getAuthority()){ %>
+				<%
+					if(3!=user.getAuthority()){
+				%>
 				<div class="sample_data">
 					<fieldset>
 						<legend> 报价详情 </legend>
@@ -116,7 +124,9 @@
 						</li>
 					</fieldset>
 				</div>
-				<%} %>
+				<%
+					}
+				%>
 
 			</div>
 
@@ -135,16 +145,20 @@
 						<th>所报价格</th>
 						<th>录入时间</th>
 						<th>备注</th>
-						<% if(1==user.getAuthority()){%>
+						<%
+							if(1==user.getAuthority()){
+						%>
 						<th>操作</th>
-						<% }%>
+						<%
+							}
+						%>
 					</tr>
 				</thead>
 
 				<%
-						for (int index = 0; index < companyPrices.size(); index++) {
-							CompanyPrice companyPrice = companyPrices.get(index);
-					%>
+					for (int index = 0; index < companyPrices.size(); index++) {
+									CompanyPrice companyPrice = companyPrices.get(index);
+				%>
 				<tr>
 					<td><%=index+1%></td>
 					<td><%=companyPrice.getCompanyName()%></td>
@@ -152,23 +166,33 @@
 					<td><%=companyPrice.getProductName()%></td>
 					<td><%=companyPrice.getSalesMan()%></td>
 					<td>
-						<%if(3!=user.getAuthority()){ %><%=companyPrice.getPrice()%>
-						<%}else{ %><%="不可见"%>
-						<% }%>
+						<%
+							if(3!=user.getAuthority()){
+						%><%=companyPrice.getPrice()%>
+						<%
+							}else{
+						%><%="不可见"%>
+						<%
+							}
+						%>
 					</td>
 					<td><%=DateFormateUtil.formateDate(companyPrice.getTime())%></td>
 					<td><%=companyPrice.getNote()%></td>
-					<% if(1==user.getAuthority()){%>
+					<%
+						if(1==user.getAuthority()){
+					%>
 					<td><a class="add_to_pricelist" href="#"
 						id="<%=companyPrice.getId()%>">添加到报价列表</a>
 						<a class="print" href="#"
-						companyPriceID="<%=companyPrice.getId() %>">打印样品详情</a>
+						companyPriceID="<%=companyPrice.getId()%>">打印样品详情</a>
 						</td>
-					<% }%>
-				</tr>
-				<%
+					<%
 						}
 					%>
+				</tr>
+				<%
+					}
+				%>
 			</table>
 
 			<!--弹出层-->
@@ -196,23 +220,25 @@
 							<label> 公司名称: </label> <select name="companyName"
 								id="companyName" data='<%=SalesNameByCompanyName%>'
 								class="require">
-								<%for(CompanyName companyName:companyList){ %>
-								<option value="<%=companyName.getCompanyName() %>"><%=companyName.getCompanyName() %></option>
-								<%} %>
+								<%
+									for(Company companyName:companyList){
+								%>
+								<option value="<%=companyName.getCompanyName()%>"><%=companyName.getCompanyName()%></option>
+								<%
+									}
+								%>
 							</select>
 						</div>
 						<div class="editor-label">
 							<label> 业务人员: </label> <select name="salesman" id="salesman"
 								class="require">
 								<%
-								if(companyList!=null & companyList.size()>0){
-									CompanyName companyName = companyList.get(0);
-									List<String> salesNameList = SalesNameByCompanyNameList.get(companyName.getCompanyName());
-									if(salesNameList != null){
-										for(String salesName:salesNameList){
-									
-									
-							 %>
+									if(companyList!=null & companyList.size()>0){
+															Company companyName = companyList.get(0);
+															List<String> salesNameList = SalesNameByCompanyNameList.get(companyName.getCompanyName());
+															if(salesNameList != null){
+																for(String salesName:salesNameList){
+								%>
 								<option value="<%=salesName %>"><%=salesName %></option>
 								<%} }}%>
 							</select>

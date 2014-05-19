@@ -15,7 +15,7 @@ import net.sf.json.JSONObject;
 
 import com.fuwei.DAO.CompanyNameDAO;
 import com.fuwei.DAO.SalesmanDAO;
-import com.fuwei.entity.CompanyName;
+import com.fuwei.entity.Company;
 import com.fuwei.entity.FWUser;
 import com.fuwei.util.ExportExcel;
 import com.fuwei.util.Print;
@@ -41,8 +41,8 @@ public class PrintSTO extends HttpServlet {
 				SalesmanDAO salesmanDAO=new SalesmanDAO();
 				String phoneNumber=salesmanDAO.getSalesManNamePhoneNumber(salesName);
 				CompanyNameDAO companyNameDAO=new CompanyNameDAO();
-				List<CompanyName> companyList=(List<CompanyName>)companyNameDAO.getCompanyByCompanyName(companyName);
-				CompanyName company=companyList.get(0);
+				List<Company> companyList=(List<Company>)companyNameDAO.getCompanyByCompanyName(companyName);
+				Company company=companyList.get(0);
 				UploadImageName uploadImageName = new UploadImageName();
 				String suijiNameString = uploadImageName.getIPTimeRand();
 				String printerName=PrinterNameUtil.getPrinterName("Jolimark");

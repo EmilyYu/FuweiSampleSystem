@@ -9,7 +9,7 @@ import com.fuwei.DAO.CompanyNameDAO;
 import com.fuwei.DAO.DeveloperDAO;
 import com.fuwei.DAO.GongXuDAO;
 import com.fuwei.DAO.SalesmanDAO;
-import com.fuwei.entity.CompanyName;
+import com.fuwei.entity.Company;
 import com.fuwei.entity.CompanySalesMan;
 import com.fuwei.entity.Developer;
 import com.fuwei.entity.GongXu;
@@ -120,9 +120,9 @@ public class InitSystemDataUtil {
 	public static HashMap<String, List<String>> initCompanyNameSpell() {
 		System.out.println("初始化CompanyName数据开始");
 		CompanyNameDAO companyNameDAO=new CompanyNameDAO();
-		List<CompanyName> companyNames=(List<CompanyName>)companyNameDAO.getAllCompanyName();
+		List<Company> companyNames=(List<Company>)companyNameDAO.getAllCompanyName();
 		HashMap<String, List<String>> hashMap=new HashMap<String, List<String>>();
-		for (CompanyName companyName : companyNames) {
+		for (Company companyName : companyNames) {
 			String jianchen=companyName.getJianChen();
 			for (int i = 1; i <= jianchen.length(); i++) {
 				String subString=jianchen.substring(0, i);
@@ -153,9 +153,9 @@ public class InitSystemDataUtil {
 	
 
 	
-	public static List<CompanyName> initCompanyName(){
+	public static List<Company> initCompanyName(){
 		CompanyNameDAO companyNameDAO=new CompanyNameDAO();
-		List<CompanyName> comList=(List<CompanyName>)companyNameDAO.getAllCompanyName();
+		List<Company> comList=(List<Company>)companyNameDAO.getAllCompanyName();
 		return comList;
 	}
 	

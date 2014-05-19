@@ -1,9 +1,9 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="com.fuwei.util.FuweiSystemData"%>
-<%@page import="com.fuwei.entity.CompanyName"%>
+<%@page import="com.fuwei.entity.Company"%>
 <%
-String path = request.getContextPath();
+	String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <html>
@@ -116,11 +116,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</thead>
 							<tbody>
 								<%
-									List<CompanyName> companyList=FuweiSystemData.getCompanyNameList();
-									for(int i=0;i<companyList.size();i++){
-										%>
-									<tr><td><%=i+1 %></td><td><%=companyList.get(i).getCompanyName() %></td><td><%=companyList.get(i).getJianChen() %></td></tr>	
-								<%}%>
+									List<Company> companyList=FuweiSystemData.getCompanyNameList();
+															for(int i=0;i<companyList.size();i++){
+								%>
+									<tr><td><%=i+1%></td><td><%=companyList.get(i).getCompanyName()%></td><td><%=companyList.get(i).getJianChen()%></td></tr>	
+								<%
+										}
+									%>
 							</tbody>
 						</table>
 					</div>
@@ -139,7 +141,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									所属公司：
 								</label>
 								<select name="companyName" id="companyName">
-							<%for(CompanyName companyName:companyList){ %>
+							<%
+								for(Company companyName:companyList){
+							%>
 								<option value="<%=companyName.getCompanyName() %>" ><%=companyName.getCompanyName() %></option>
 							<%} %>
 </select>

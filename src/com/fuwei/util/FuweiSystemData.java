@@ -3,7 +3,7 @@ package com.fuwei.util;
 import java.util.HashMap;
 import java.util.List;
 
-import com.fuwei.entity.CompanyName;
+import com.fuwei.entity.Company;
 
 public class FuweiSystemData {
 	public static final int ADD_QUOTATION = 2;
@@ -33,13 +33,13 @@ public class FuweiSystemData {
 	
 	private static HashMap<String, List<String>> salesNameByCompanyName;
 	private static HashMap<String, List<String>> companyNameSpell;
-	private static List<CompanyName> companyNameList;
+	private static List<Company> companyNameList;
 
 	public static HashMap<String, List<String>> getCompanyNameSpell() {
 		return companyNameSpell;
 	}
 
-	public static List<CompanyName> getCompanyNameList() {
+	public static List<Company> getCompanyNameList() {
 		return companyNameList;
 	}
 
@@ -70,7 +70,7 @@ public class FuweiSystemData {
 		FuweiSystemData.companyNameSpell = companyNameSpell;
 	}
 
-	public static void setCompanyNameList(List<CompanyName> companyNameList) {
+	public static void setCompanyNameList(List<Company> companyNameList) {
 		FuweiSystemData.companyNameList = companyNameList;
 	}
 

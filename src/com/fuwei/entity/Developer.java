@@ -5,10 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/*本公司 ，跟单人类*/
 @Entity
 public class Developer {
 	private int id;
-	private String developerName;
+	private String name;
 	private String jianChen;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -18,11 +19,12 @@ public class Developer {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDeveloperName() {
-		return developerName;
+
+	public String getName() {
+		return name;
 	}
-	public void setDeveloperName(String developerName) {
-		this.developerName = developerName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getJianChen() {
 		return jianChen;

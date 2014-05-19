@@ -30,6 +30,8 @@ public class FWOrder {
 	private int salesmanId;//业务员Id
 	private String memo;//备注
 	
+	
+	private QuotationList quote;
 //
 //	//公司名称
 //	private String companyName;
@@ -42,6 +44,13 @@ public class FWOrder {
 //	
 //	private String note;
 	
+	@Transient
+	public QuotationList getQuote() {
+		return quote;
+	}
+	public void setQuote(QuotationList quote) {
+		this.quote = quote;
+	}
 	public int getQuoteId() {
 		return quoteId;
 	}

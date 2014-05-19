@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 
 import com.fuwei.DAO.CompanyNameDAO;
-import com.fuwei.entity.CompanyName;
+import com.fuwei.entity.Company;
 import com.fuwei.util.FuweiSystemData;
 import com.fuwei.util.InitSystemDataUtil;
 
@@ -30,7 +30,7 @@ public class AddCompanyNameService extends HttpServlet {
 			String phone=req.getParameter("phone");
 			String quanChen=req.getParameter("quanChen");
 			String destination=req.getParameter("destination");
-			CompanyName companyNameEntity=new CompanyName();
+			Company companyNameEntity=new Company();
 			companyNameEntity.setCompanyName(companyName);
 			companyNameEntity.setJianChen(jianChen);
 			companyNameEntity.setAddress(address);

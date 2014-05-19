@@ -7,15 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/*生产通知单*/
 @Entity
 public class ProductionNotification {
-	private int id;
-	private int fworderID;
+	private int id;/*主键，生产通知单Id*/
+	private int fworderID;/*订单号*/
 	//加工单位
-	private String jiagongdanwei;
+	private String jiagongdanwei;/*加工单位*/
 	//生产通知单号
 	private String notificationNumber;
-	private String companyName;
+//	private String companyName;
+	private int companyId;
+	
 	//订单号
 	private String fworderNumber;
 	//货号
@@ -36,6 +39,7 @@ public class ProductionNotification {
 	private Date creatTime;
 	//内容json字符串  json数组， json对象内容：色号，色别，尺寸，生产数量，材料名称，材料数量，损耗，总材料
 	private String contentJSONString;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {

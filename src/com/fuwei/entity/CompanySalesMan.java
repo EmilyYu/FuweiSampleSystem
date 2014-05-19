@@ -5,19 +5,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/*业务员类*/
 @Entity
 public class CompanySalesMan {
 	private int id;
-	private String salesManName;
-	private String jianChen;
+	private String name;
+	private String jianChen;/*简称*/
 	private String phone;
+	private int companyId;/*公司外键*/
+	
 	public String getPhone() {
 		return phone;
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	private String companyName;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
@@ -26,23 +29,25 @@ public class CompanySalesMan {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getSalesManName() {
-		return salesManName;
-	}
-	public void setSalesManName(String salesManName) {
-		this.salesManName = salesManName;
-	}
+	
 	public String getJianChen() {
 		return jianChen;
 	}
 	public void setJianChen(String jianChen) {
 		this.jianChen = jianChen;
 	}
-	public String getCompanyName() {
-		return companyName;
+	public String getName() {
+		return name;
 	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
+	public void setName(String name) {
+		this.name = name;
 	}
+	public int getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
+	
 	
 }

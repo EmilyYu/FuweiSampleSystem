@@ -1,19 +1,27 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="com.fuwei.util.FuweiSystemData"%>
-<%@page import="com.fuwei.entity.CompanyName"%>
+<%@page import="com.fuwei.entity.Company"%>
 <%@page import="com.fuwei.entity.CompanySalesMan"%>
 <%@page import="net.sf.json.JSONObject"%>
+<%@page import="com.fuwei.entity.FWOrder"%>
+<%@page import="com.fuwei.entity.QuotationList"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-
-	List<CompanyName> companyNameList = FuweiSystemData.getCompanyNameList();
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
+	
+	List<Company> companyNameList = FuweiSystemData.getCompanyNameList();
 	HashMap<String, List<String>> SalesNameByCompanyNameList = FuweiSystemData.getSalesNameByCompanyName();
 	JSONObject jObject = new JSONObject();
 	jObject.put("SalesNameByCompanyName", SalesNameByCompanyNameList);
 	String SalesNameByCompanyName = jObject.toString();
+	
+	
+	//获取当前信息
+	FWOrder order = (FWOrder)request.getAttribute("order");
+	QuotationList quote = order.getQuote();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -72,17 +80,33 @@ table {
 							<span>创建订单</span>
 						</div>
 					</div>
-					<form method="post" enctype="multipart/form-data" class="form"
-						id="addOrder">
+					<form method="post" class="form" id="addOrder">
 						<div class="editor-label error-label">
 							<span class="error"></span>
 						</div>
+						<input type="hidden" name="companyId" value="<%=  quote.getCompanyName() %>"/>
+						<input type="hidden" name="salesmanId" value=""<%=quote.getSalesName() %> />
 						<div class="editor-label">
 							<label>
 								报价单:
 							</label>
-							<input type="text" name="companyName" id="companyName"
+							<input type="hidden" name="quoteId" id="quoteId" value="<%=quote.getId() %>" />
+							<%
+							if(quote.getQuotationNumber()!=null && quote.getQuotationNumber()!=""){
+							%>
+								
+								<input type="text" name="quoteNumber" id="quoteNumber"
+								class="require" value="<%=quote.getQuotationNumber() %>" tip="请输入报价单号" />
+							<%
+							}
+							else{
+							%>
+								<input type="text" name="quoteNumber" id="quoteNumber"
 								class="require tip" value="请输入报价单号" tip="请输入报价单号" />
+							<%
+							}
+							 %>
+							
 							<a href="javascript:;"><i class="fa fa-search"></i>
 							</a>
 						</div>
@@ -105,7 +129,8 @@ table {
 								合同签订时间:
 							</label>
 							<input type="text" name="start_at" id="start_at"
-								class="require wdatepicker" />
+								class="require wdatepicker" 
+								value="<%= new SimpleDateFormat("yyyy-mm-dd").format(new Date()) %>"/>
 						</div>
 						<div class="editor-label">
 							<label>
@@ -114,22 +139,6 @@ table {
 							<input type="text" name="end_at" id="end_at"
 								class="require wdatepicker" />
 						</div>
-						<!-- 	<div class="editor-label">
-							<label> 公司名称: </label> <select name="companyId"
-								id="companyId" readonly class="require" data='<%=SalesNameByCompanyName%>'>
-								<option value="">未选择</option>
-								<%for(CompanyName companyName:companyNameList){ %>
-								<option value="<%=companyName.getId() %>"><%=companyName.getCompanyName() %></option>
-								<%} %>
-							</select>
-						</div>
-						<div class="editor-label">
-							<label> 业务人员: </label> 
-							<select name="salesmanId" id="salesmanId" class="require" readOnly>
-								<option value="">未选择</option>
-							</select>
-						</div> -->
-
 						<div class="editor-label">
 							<label>
 								备注:
@@ -138,13 +147,14 @@ table {
 						</div>
 
 						<div class="clear"></div>
-
+						
 						<div class="Operatings">
 							<input type="submit" id="Save" class="button_work" value="确定" />
 							<input type="button" id="Cancel" class="button_work" value="取消" />
 						</div>
 					</form>
 					<div id="tablewidget">
+						<label>公司名称：</label><span></span>
 						<table border=1 class="wijmo">
 							<thead>
 								<tr>
