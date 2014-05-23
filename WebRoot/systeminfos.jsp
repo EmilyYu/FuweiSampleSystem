@@ -2,6 +2,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="com.fuwei.util.FuweiSystemData"%>
 <%@page import="com.fuwei.entity.Company"%>
+<%@page import="com.fuwei.entity.Developer"%>
+<%@page import="com.fuwei.entity.CompanySalesMan"%>
 <%
 	String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -48,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 
 			<div id="tab1" class="tab_widget">
-				<div class="block" style="margin-top:50px;">
+				<div class="block" style="margin-top: 50px;">
 					<div class="table_head">
 						添加公司
 					</div>
@@ -59,32 +61,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<label>
 									中文简称：
 								</label>
-								<input type="text" name="companyName" id="companyName" class="require"/>
+								<input type="text" name="companyName" id="companyName"
+									class="require" />
 							</div>
 							<div class="editor-label">
 								<label>
 									英文简称：
 								</label>
-								<input type="text" name="companyName_jc" id="companyName_jc" class="require"/>
+								<input type="text" name="companyName_jc" id="companyName_jc"
+									class="require" />
 							</div>
 							<div class="editor-label">
 								<label>
 									公司地址：
 								</label>
-								<input type="text" name="address" id="address" class="require"/>
+								<input type="text" name="address" id="address" class="require" />
 							</div>
-						
+
 							<div class="editor-label">
 								<label>
 									公司全称：
 								</label>
-								<input type="text" name="quanChen" id="quanChen" class="require"/>
+								<input type="text" name="quanChen" id="quanChen" class="require" />
 							</div>
 							<div class="editor-label">
 								<label>
 									所在城市：
 								</label>
-								<input type="text" name="destination" id="destination" class="require"/>
+								<input type="text" name="destination" id="destination"
+									class="require" />
 							</div>
 							<div class="editor-label">
 								<input type="submit" value="保存" />
@@ -94,10 +99,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</form>
 					</div>
 				</div>
-				<div class="table_list_widget block" style="margin-top:50px;">
+				<div class="table_list_widget block" style="margin-top: 50px;">
 					<div class="table_head">
 						公司列表
-						<ul class="head_handles"><li><a href="systeminfos.jsp?tabid=tab1"><i class="fa fa-refresh"></i></a></li></ul>
+						<ul class="head_handles">
+							<li>
+								<a href="systeminfos.jsp?tabid=tab1"><i
+									class="fa fa-refresh"></i>
+								</a>
+							</li>
+						</ul>
 					</div>
 					<div class="table_content">
 						<table class="wijmo">
@@ -116,10 +127,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</thead>
 							<tbody>
 								<%
-									List<Company> companyList=FuweiSystemData.getCompanyNameList();
-															for(int i=0;i<companyList.size();i++){
+									List<Company> companyList=FuweiSystemData.getCompanyList();
+									for(int i=0;i<companyList.size();i++){
 								%>
-									<tr><td><%=i+1%></td><td><%=companyList.get(i).getCompanyName()%></td><td><%=companyList.get(i).getJianChen()%></td></tr>	
+								<tr>
+									<td><%=i+1%></td>
+									<td><%=companyList.get(i).getName()%></td>
+									<td><%=companyList.get(i).getJianChen()%></td>
+								</tr>
 								<%
 										}
 									%>
@@ -140,25 +155,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<label>
 									所属公司：
 								</label>
-								<select name="companyName" id="companyName">
-							<%
+								<select name="companyId" id="companyId">
+									<%
 								for(Company companyName:companyList){
 							%>
-								<option value="<%=companyName.getCompanyName() %>" ><%=companyName.getCompanyName() %></option>
-							<%} %>
-</select>
+									<option value="<%=companyName.getId() %>"><%=companyName.getName() %></option>
+									<%} %>
+								</select>
 							</div>
 							<div class="editor-label">
 								<label>
 									业务员姓名：
 								</label>
-								<input type="text" name="salesName" id="salesName" class="require"/>
+								<input type="text" name="salesName" id="salesName"
+									class="require" />
 							</div>
 							<div class="editor-label">
 								<label>
 									联系电话：
 								</label>
-								<input type="text" name="phone" id="phone" class="require"/>
+								<input type="text" name="phone" id="phone" class="require" />
 							</div>
 
 							<div class="editor-label">
@@ -172,7 +188,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="table_list_widget block">
 					<div class="table_head">
 						业务员列表
-						<ul class="head_handles"><li><a href="systeminfos.jsp?tabid=tab2"><i class="fa fa-refresh"></i></a></li></ul>
+						<ul class="head_handles">
+							<li>
+								<a href="systeminfos.jsp?tabid=tab2"><i
+									class="fa fa-refresh"></i>
+								</a>
+							</li>
+						</ul>
 					</div>
 					<div class="table_content">
 						<table class="wijmo">
@@ -181,7 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<th>
 										序号
 									</th>
-	<th>
+									<th>
 										所属公司
 									</th>
 									<th>
@@ -190,14 +212,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</tr>
 							</thead>
 							<tbody>
-								<%HashMap<String,List<String>> salesNameByCompanyName=FuweiSystemData.getSalesNameByCompanyName();
+								<%HashMap<String,List<CompanySalesMan>> salesNameByCompanyName=FuweiSystemData.getSalesNameByCompany();
 								Set<String> keySet=salesNameByCompanyName.keySet();
 								int i=1;
 								for(String key:keySet){
-								List<String> salesNameList=salesNameByCompanyName.get(key);
-									for(String samlesName:salesNameList){
+									String companyname = FuweiSystemData.getCompanyNameById(Integer.parseInt(key));
+									List<CompanySalesMan> salesNameList=salesNameByCompanyName.get(key);
+									for(CompanySalesMan salesman:salesNameList){
 								%>
-									<tr><td><%=i %></td><td><%=key%></td><td><%=samlesName %></td></tr>
+								<tr>
+									<td><%=i %></td>
+									<td><%=companyname%></td>
+									<td><%=salesman.getName() %></td>
+								</tr>
 								<%i++;}
 								}%>
 							</tbody>
@@ -217,16 +244,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<label>
 									姓名：
 								</label>
-								<input type="text" name="manName" id="manName"  class="require"/>
+								<input type="text" name="manName" id="manName" class="require" />
 							</div>
 							<div class="editor-label">
 								<label>
 									权限：
 								</label>
 								<select name="authority" id="authority">
-									<option value="1">高级用户</option>
-									<option value="2">中级用户</option>
-									<option value="3">普通用户</option>
+									<option value="1">
+										高级用户
+									</option>
+									<option value="2">
+										中级用户
+									</option>
+									<option value="3">
+										普通用户
+									</option>
 								</select>
 							</div>
 							<div class="editor-label">
@@ -239,8 +272,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="table_list_widget block">
 					<div class="table_head">
-						跟单人列表
-						<ul class="head_handles"><li><a href="systeminfos.jsp?tabid=tab3"><i class="fa fa-refresh"></i></a></li></ul>
+						系统用户列表
+						<ul class="head_handles">
+							<li>
+								<a href="systeminfos.jsp?tabid=tab3"><i
+									class="fa fa-refresh"></i>
+								</a>
+							</li>
+						</ul>
 					</div>
 					<div class="table_content">
 						<table class="wijmo">
@@ -252,12 +291,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<th>
 										名称
 									</th>
+									<th>
+										用户名
+									</th>
+									<th>
+										权限
+									</th>
 								</tr>
 							</thead>
 							<tbody>
-								<%List<String> developerNameList=FuweiSystemData.getDeveloperNameList();
-								for(int i1=0;i1<developerNameList.size();i1++){%>
-									<tr><td><%=i1+1 %></td><td><%=developerNameList.get(i1) %></td></tr>
+								<%
+								List<Developer> developerList=FuweiSystemData.getDeveloperList();
+								for(int i1=0; i1<developerList.size(); i1++){%>
+								<tr>
+									<td><%=i1+1 %></td>
+									<td><%=developerList.get(i1).getName() %></td>
+									<td><%=developerList.get(i1).getJianChen() %></td>
+									<td><%=developerList.get(i1).getJianChen() %></td>
+								</tr>
 								<%}%>
 							</tbody>
 						</table>
@@ -276,7 +327,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<label>
 									工序名称：
 								</label>
-								<input type="text" name="gongxuName" id="gongxuName" class="require" />
+								<input type="text" name="gongxuName" id="gongxuName"
+									class="require" />
 							</div>
 							<div class="editor-label">
 								<input type="submit" value="保存" />
@@ -290,7 +342,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="table_list_widget block">
 					<div class="table_head">
 						工序列表
-						<ul class="head_handles"><li></li></ul>
+						<ul class="head_handles">
+							<li></li>
+						</ul>
 					</div>
 					<div class="table_content">
 						<table class="wijmo">
@@ -307,8 +361,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<tbody>
 								<%List<String> gongXuList=FuweiSystemData.getGongXuList();
 									for(int i2=0;i2<gongXuList.size();i2++){%>
-								<tr><td><%=i2+1 %></td><td><%=gongXuList.get(i2) %></td></tr>							
-	<%}%>
+								<tr>
+									<td><%=i2+1 %></td>
+									<td><%=gongXuList.get(i2) %></td>
+								</tr>
+								<%}%>
 							</tbody>
 						</table>
 					</div>
@@ -319,51 +376,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </html>
 <script type="text/javascript">
-	$(".tab>ul>li").click(function() {
-    	$(this).siblings("li").removeClass('active');
-    	$(this).addClass('active');
-    	var tabid = $(this).attr("tabid");
-    	$(".tab_widget").hide();
-    	$("#"+tabid).show();
+	$(".tab>ul>li").click( function() {
+		$(this).siblings("li").removeClass('active');
+		$(this).addClass('active');
+		var tabid = $(this).attr("tabid");
+		$(".tab_widget").hide();
+		$("#" + tabid).show();
 	});
-	
-	$(".tab>ul>li>a").click(function() {
-    	$(this).parent().siblings("li").removeClass('active');
-    	$(this).parent().addClass('active');
-    	var tabid = $(this).parent().attr("tabid");
-    	$(".tab_widget").hide();
-    	$("#"+tabid).show();
-    	return false;
-	});
-	$(".table_content form").submit(function(){
-		if(!checkform(this)){
-        	return false;
-        }
-		$(this).ajaxSubmit({
-            	type: 'post',
-            	url: $(this).attr("action"),
-            	dataType: 'json',
-            	success: function (result) {
-                	if(result.OK){
-                    	alert("添加成功");
-                    	var tabid = $(".tab>ul>li.active").attr("tabid");
-                    	location = location.pathname+"?tabid="+tabid;
-                    }
-                    else{
-                    	alert("添加失败,错误信息:"+result.message);
-                    }
-            	}
-        	});
+
+	$(".tab>ul>li>a").click( function() {
+		$(this).parent().siblings("li").removeClass('active');
+		$(this).parent().addClass('active');
+		var tabid = $(this).parent().attr("tabid");
+		$(".tab_widget").hide();
+		$("#" + tabid).show();
 		return false;
 	});
-		
+	$(".table_content form").submit( function() {
+		if (!checkform(this)) {
+			return false;
+		}
+		$(this).ajaxSubmit( {
+			type :'post',
+			url :$(this).attr("action"),
+			dataType :'json',
+			success : function(result) {
+				if (result.OK) {
+					alert("添加成功");
+					var tabid = $(".tab>ul>li.active").attr("tabid");
+					location = location.pathname + "?tabid=" + tabid;
+				} else {
+					alert("添加失败,错误信息:" + result.message);
+				}
+			}
+		});
+		return false;
+	});
+
 	/*根据url显示当前tab*/
 	var tabid = Common.urlParams().tabid;
-	if(typeof(tabid)=="undefined"){
+	if (typeof (tabid) == "undefined") {
 		$(".tab>ul>li").first().click();
-	}
-	else{
-		$(".tab>ul>li[tabid='"+tabid+"']").click();
+	} else {
+		$(".tab>ul>li[tabid='" + tabid + "']").click();
 	}
 	/*根据url显示当前tab*/
 </script>

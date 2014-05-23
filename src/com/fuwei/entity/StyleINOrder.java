@@ -29,14 +29,21 @@ public class StyleINOrder {
 	private double expectedMaterialTotal;
 	
 	private int FWOrderID;
-	private String note;
+	private String memo;
 	
-	public String getNote() {
-		return note;
+	
+	public String getMemo() {
+		return memo;
 	}
-	public void setNote(String note) {
-		this.note = note;
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
+	//	public String getNote() {
+//		return note;
+//	}
+//	public void setNote(String note) {
+//		this.note = note;
+//	}
 	public int getFWOrderID() {
 		return FWOrderID;
 	}

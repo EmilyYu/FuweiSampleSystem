@@ -842,7 +842,7 @@ padding: 6px;
 padding-left: 20px;
 }
 .fixed_head{
-	position: relative;
+	position: fixed;
 padding-bottom: 0;
 border-bottom: 1px solid #dbdbdb;
 -o-box-shadow: 0 0 2px #CCC;

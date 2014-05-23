@@ -15,7 +15,7 @@ import com.fuwei.DAO.UnPricedSampleDAO;
 import com.fuwei.entity.Sample;
 import com.fuwei.entity.UnPricedSample;
 
-public class AddPirceToSampleServlet extends HttpServlet {
+public class AddPriceToSampleServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -35,14 +35,14 @@ public class AddPirceToSampleServlet extends HttpServlet {
 				sample.setCost(price);
 				sample.setDate(unPricedSample.getDate());
 				sample.setDetail(detail);
-				sample.setDeveloper(unPricedSample.getDeveloper());
+				sample.setDeveloperId(unPricedSample.getDeveloperId());
 				sample.setMaterial(unPricedSample.getMaterial());
 				sample.setPicturePath(unPricedSample.getPicturePath());
 				sample.setProductNumber(unPricedSample.getProductNumber());
 				sample.setSize(unPricedSample.getSize());
 				sample.setWeight(unPricedSample.getWeight());
 				sample.setMachine(unPricedSample.getMachine());
-				sample.setNote(unPricedSample.getNote());
+				sample.setMemo(unPricedSample.getMemo());
 				SampleDAO sampleDAO=new SampleDAO();
 				System.out.println(sample.getDetail());
 				int sampleId=sampleDAO.addSample(sample);

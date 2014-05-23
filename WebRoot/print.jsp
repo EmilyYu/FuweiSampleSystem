@@ -5,6 +5,7 @@
 <%@page import="com.fuwei.entity.CompanyPrice"%>
 <%@page import="com.fuwei.entity.Company"%>
 <%@page import="net.sf.json.JSONObject"%>
+<%@page import="com.fuwei.entity.CompanySalesMan"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -12,8 +13,8 @@
 	+ path + "/";
 	Sample sample = (Sample) request.getAttribute("sample");
 	List<CompanyPrice> companyPrices = (List<CompanyPrice>) request.getAttribute("companys");
-	List<Company> companyList=FuweiSystemData.getCompanyNameList();
-	HashMap<String, List<String>> SalesNameByCompanyNameList = FuweiSystemData.getSalesNameByCompanyName();
+	List<Company> companyList=FuweiSystemData.getCompanyList();
+	HashMap<String, List<CompanySalesMan>> SalesNameByCompanyNameList = FuweiSystemData.getSalesNameByCompany();
 	JSONObject jObject = new JSONObject();
 	jObject.put("SalesNameByCompanyName", SalesNameByCompanyNameList);
 	String SalesNameByCompanyName = jObject.toString();
@@ -61,11 +62,11 @@
 							<label>
 								公司名称:
 							</label>
-							<select name="companyName" id="companyName" data='<%=SalesNameByCompanyName%>' class="require">
+							<select name="companyId" id="companyId" data='<%=SalesNameByCompanyName%>' class="require">
 							<%
-								for(Company companyName:companyList){
+								for(Company company:companyList){
 							%>
-								<option value="<%=companyName.getCompanyName()%>" ><%=companyName.getCompanyName()%></option>
+								<option value="<%=company.getId()%>" ><%=company.getName()%></option>
 							<%
 								}
 							%>
@@ -75,13 +76,13 @@
 							<label>
 								业务人员:
 							</label>
-							<select name="salesman" id="salesman" class="require">
+							<select name="salesmanId" id="salesmanId" class="require">
 							<%
 								Company companyName = companyList.get(0);
-												List<String> salesNameList = SalesNameByCompanyNameList.get(companyName.getCompanyName());
-												for(String salesName:salesNameList){
+												List<CompanySalesMan> salesmanList = SalesNameByCompanyNameList.get(companyName.getId());
+												for(CompanySalesMan salesman:salesmanList){
 							%>
-								<option value="<%=salesName %>" ><%=salesName %></option>
+								<option value="<%=salesman.getId() %>" ><%=salesman.getName()%></option>
 							<%} %>
 							</select>
 						</div>

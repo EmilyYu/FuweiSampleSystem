@@ -30,17 +30,17 @@ public class AddCompanyPriceServlet extends HttpServlet {
 		resp.setCharacterEncoding("utf-8");
 		try {
 			int sampleID = Integer.valueOf(req.getParameter("sampleid"));
-			String companyName = req.getParameter("companyName");
+			int companyId = Integer.parseInt(req.getParameter("companyId"));
 			String productNumber = req.getParameter("productNumber");
 			double price = Double.valueOf(req.getParameter("price"));
-			String salesman = req.getParameter("salesman");
-			String note = req.getParameter("note");
+			int salesmanId = Integer.parseInt(req.getParameter("salesmanId"));
+			String memo = req.getParameter("memo");
 			CompanyPrice companyPrice = new CompanyPrice();
-			companyPrice.setCompanyName(companyName);
+			companyPrice.setCompanyId(companyId);
 			companyPrice.setProductName(productNumber);
-			companyPrice.setNote(note);
+			companyPrice.setMemo(memo);
 			companyPrice.setPrice(price);
-			companyPrice.setSalesMan(salesman);
+			companyPrice.setSalesManId(salesmanId);
 			companyPrice.setSampleId(sampleID);
 			companyPrice.setTime(new Date());
 			CompanyPriceDAO companyPriceDAO = new CompanyPriceDAO();

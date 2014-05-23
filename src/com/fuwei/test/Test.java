@@ -20,37 +20,37 @@ public class Test {
 		
 		ExportExcel.exportSampleDetailExcel(sample,companyPrice, "e:/", "ee.xls");
 		*/
-		ProductionNotification productionNotification=new ProductionNotification();
-		productionNotification.setCompanyName("轻纺");
-		productionNotification.setCreatTime(new Date());
-		productionNotification.setDeadlineTime(StringTODate.changeStringTODate("2014/01/01"));
-		productionNotification.setExceptProductQuantity(2310);
-		productionNotification.setFworderID(1);
-		productionNotification.setFworderNumber("J16173");
-		productionNotification.setId(0);
-		productionNotification.setJiagongdanwei("富伟");
-		productionNotification.setKezhong(230.1);
-		productionNotification.setMachineZhenXing("3针");
-		productionNotification.setNote("备注");
-		productionNotification.setNotificationNumber("FWA40001");
-		productionNotification.setPictureName("1.png");
-		productionNotification.setProductName("围脖");
-		productionNotification.setStyleNumber("款号");
-		JSONArray jsonArray=new JSONArray();
-		for (int i = 0; i < 4; i++) {
-			JSONObject jsonObject=new JSONObject();
-			jsonObject.put("sehao", "sehao"+i);
-			jsonObject.put("sebie", "sebie"+i);
-			jsonObject.put("size", "50*(50*2)"+i);
-			jsonObject.put("quantity", 1000+""+i);
-			jsonObject.put("materialName", "100%晴纶"+i);
-			jsonObject.put("materialQuantity", 100+""+i);
-			jsonObject.put("sunhao", 1.1+""+i);
-			jsonObject.put("totalMaterial", 110+""+i);
-			jsonArray.add(jsonObject);
-		}
-		productionNotification.setContentJSONString(jsonArray.toString());
-		ExportExcel.exportProductionNotification("e:/", "ee.xls",productionNotification,"e:/");
+//		ProductionNotification productionNotification=new ProductionNotification();
+//		productionNotification.setCompanyName("轻纺");
+//		productionNotification.setCreatTime(new Date());
+//		productionNotification.setDeadlineTime(StringTODate.changeStringTODate("2014/01/01"));
+//		productionNotification.setExceptProductQuantity(2310);
+//		productionNotification.setFworderID(1);
+//		productionNotification.setFworderNumber("J16173");
+//		productionNotification.setId(0);
+//		productionNotification.setJiagongdanwei("富伟");
+//		productionNotification.setKezhong(230.1);
+//		productionNotification.setMachineZhenXing("3针");
+//		productionNotification.setNote("备注");
+//		productionNotification.setNotificationNumber("FWA40001");
+//		productionNotification.setPictureName("1.png");
+//		productionNotification.setProductName("围脖");
+//		productionNotification.setStyleNumber("款号");
+//		JSONArray jsonArray=new JSONArray();
+//		for (int i = 0; i < 4; i++) {
+//			JSONObject jsonObject=new JSONObject();
+//			jsonObject.put("sehao", "sehao"+i);
+//			jsonObject.put("sebie", "sebie"+i);
+//			jsonObject.put("size", "50*(50*2)"+i);
+//			jsonObject.put("quantity", 1000+""+i);
+//			jsonObject.put("materialName", "100%晴纶"+i);
+//			jsonObject.put("materialQuantity", 100+""+i);
+//			jsonObject.put("sunhao", 1.1+""+i);
+//			jsonObject.put("totalMaterial", 110+""+i);
+//			jsonArray.add(jsonObject);
+//		}
+//		productionNotification.setContentJSONString(jsonArray.toString());
+//		ExportExcel.exportProductionNotification("e:/", "ee.xls",productionNotification,"e:/");
 		//ExportExcel.exportKuaiDiDan("e:/", "kuaidi.xls", "胡盼", "1111", "111", "2222", "1111", "1111");
 		//Print.printExcel("e:/20140309123353780813.xls", 1, PrinterNameUtil.getPrinterName("HP"));
 		

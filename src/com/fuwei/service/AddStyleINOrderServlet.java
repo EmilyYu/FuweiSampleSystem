@@ -53,11 +53,11 @@ public class AddStyleINOrderServlet extends HttpServlet {
 			double price=Double.valueOf(smartUpload.getRequest().getParameter("price"));
 			double expectedMaterialTotal=Double.valueOf(smartUpload.getRequest().getParameter("expectedMaterialTotal"));
 			int fwOrderID=Integer.valueOf(smartUpload.getRequest().getParameter("fwOrderID"));
-			String note=smartUpload.getRequest().getParameter("note");
-			if(note==null||note.length()<1){
-				styleINOrder.setNote("");
+			String memo=smartUpload.getRequest().getParameter("memo");
+			if(memo==null||memo.length()<1){
+				styleINOrder.setMemo("");
 			}else {
-				styleINOrder.setNote(note);
+				styleINOrder.setMemo(memo);
 			}
 			styleINOrder.setStyleName(styleName);
 			styleINOrder.setStyleNumber(styleNumber);

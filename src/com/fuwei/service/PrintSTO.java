@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
-import com.fuwei.DAO.CompanyNameDAO;
+import com.fuwei.DAO.CompanyDAO;
 import com.fuwei.DAO.SalesmanDAO;
 import com.fuwei.entity.Company;
 import com.fuwei.entity.FWUser;
@@ -40,8 +40,8 @@ public class PrintSTO extends HttpServlet {
 				
 				SalesmanDAO salesmanDAO=new SalesmanDAO();
 				String phoneNumber=salesmanDAO.getSalesManNamePhoneNumber(salesName);
-				CompanyNameDAO companyNameDAO=new CompanyNameDAO();
-				List<Company> companyList=(List<Company>)companyNameDAO.getCompanyByCompanyName(companyName);
+				CompanyDAO companyDAO=new CompanyDAO();
+				List<Company> companyList=(List<Company>)companyDAO.getCompanyByName(companyName);
 				Company company=companyList.get(0);
 				UploadImageName uploadImageName = new UploadImageName();
 				String suijiNameString = uploadImageName.getIPTimeRand();

@@ -60,19 +60,18 @@
 										全部
 									</option>
 									<%
-									List<String> developerNameList = FuweiSystemData.getDeveloperNameList();
+									List<Developer> developerList = FuweiSystemData.getDeveloperList();
 									String selected_developer = (String)request.getAttribute("developer");
 									System.out.println(selected_developer);
-									for(String developerName :developerNameList){
-										System.out.println(developerName);
-										if(developerName.equals(selected_developer)){
+									for(Developer developer :developerList){
+										if(developer.getName().equals(selected_developer)){
 									 %>
-									<option selected value="<%=developerName %>"><%=developerName %></option>
+									<option selected value="<%=developer.getId() %>"><%=developer.getName() %></option>
 									<%
 									}
 									else{
 									 %>
-									<option value="<%=developerName %>"><%=developerName %></option>
+									<option value="<%=developer.getId() %>"><%=developer.getName() %></option>
 									<%
 									} 
 									}%>
@@ -142,7 +141,7 @@
 									<td><%=unPricedSample.getMaterial() %></td>
 									<td><%=unPricedSample.getWeight() %></td>
 									<td><%=unPricedSample.getSize() %></td>
-									<td><%=unPricedSample.getDeveloper() %></td>
+									<td><%=FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName()  %></td>
 									<td><%=unPricedSample.getMachine() %></td>
 									<td><%=DateFormateUtil.formateDate(unPricedSample.getDate()) %></td>
 									<td>
@@ -150,7 +149,7 @@
 										if(user.getAuthority() == FuweiSystemData.AUTHORITY_GENERAL){
 										
 										 %>
-										<%=unPricedSample.getNote() %>
+										<%=unPricedSample.getMemo() %>
 										<%
 										}
 										else{
@@ -205,7 +204,7 @@
 									<label>
 										打样人:
 									</label>
-									<select id="developer" name="developer">
+									<select id="developerId" name="developerId">
 										<%
 										if(user.getAuthority() == FuweiSystemData.AUTHORITY_GENERAL){
 										
@@ -215,10 +214,10 @@
 									}
 									else
 									{
-										List<String> developerNameList2 = FuweiSystemData.getDeveloperNameList();
-										for(String developerName :developerNameList2){
+										List<Developer> developerList2 = FuweiSystemData.getDeveloperList();
+										for(Developer developer :developerList2){
 									 	%>
-											<option value="<%=developerName %>"><%=developerName %></option>
+											<option value="<%=developer.getId() %>"><%=developer.getName() %></option>
 											<%
 										} 
 									}%>
@@ -260,7 +259,7 @@
 									<label>
 										备注:
 									</label>
-									<input type="text" name="note" id="note"  />
+									<input type="text" name="memo" id="memo"  />
 								</div>
 
 								<div class="clear"></div>

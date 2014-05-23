@@ -85,7 +85,7 @@ public class ChartGraphics {
 			drawString(graphics,unPricedSample.getProductNumber(), contentStyleX, 75+(i*imageHeight));
 			graphics.setFont(f);
 			graphics.drawString(DEVELOPER, signStyleX, 150+(i*imageHeight));
-			drawString(graphics,unPricedSample.getDeveloper(), contentStyleX,150+(i*imageHeight));
+			drawString(graphics,FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName() , contentStyleX,150+(i*imageHeight));
 			
 			graphics.setFont(f);
 			graphics.drawString(SIZE, signStyleX,225+(i*imageHeight));
@@ -117,7 +117,7 @@ public class ChartGraphics {
 			drawString(graphics,unPricedSample.getProductNumber(), contentStyleX, 75+(i*imageHeight));
 			graphics.setFont(f);
 			graphics.drawString(DEVELOPER, signStyleX, 150+(i*imageHeight));
-			drawString(graphics,unPricedSample.getDeveloper(), contentStyleX,150+(i*imageHeight));
+			drawString(graphics,FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), contentStyleX,150+(i*imageHeight));
 			
 			graphics.setFont(f);
 			graphics.drawString(SIZE, signStyleX,225+(i*imageHeight));
@@ -152,7 +152,7 @@ public class ChartGraphics {
 			drawString(graphics,unPricedSample.getProductNumber(), contentStyleX, 55+(i*imageHeight));
 			graphics.setFont(f);
 			graphics.drawString(DEVELOPER, signStyleX, 130+(i*imageHeight));
-			drawString(graphics,unPricedSample.getDeveloper(), contentStyleX,130+(i*imageHeight));
+			drawString(graphics,FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), contentStyleX,130+(i*imageHeight));
 			
 			graphics.setFont(f);
 			graphics.drawString(SIZE, signStyleX,205+(i*imageHeight));
@@ -188,7 +188,7 @@ public class ChartGraphics {
 			drawString(graphics,unPricedSample.getProductNumber(), contentStyleX, 75+(i*imageHeight));
 			graphics.setFont(f);
 			graphics.drawString(DEVELOPER, signStyleX, 150+(i*imageHeight));
-			drawString(graphics,unPricedSample.getDeveloper(), contentStyleX,150+(i*imageHeight));
+			drawString(graphics,FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), contentStyleX,150+(i*imageHeight));
 			
 			graphics.setFont(f);
 			graphics.drawString(SIZE, signStyleX,225+(i*imageHeight));

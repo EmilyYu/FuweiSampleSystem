@@ -1,11 +1,13 @@
 package com.fuwei.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /*生产通知单*/
 @Entity
@@ -19,8 +21,11 @@ public class ProductionNotification {
 //	private String companyName;
 	private int companyId;
 	
+//	private List<SamplePrice> products;
 	//订单号
 	private String fworderNumber;
+//	
+//	
 	//货号
 	private String styleNumber;
 	//产品名称
@@ -29,17 +34,31 @@ public class ProductionNotification {
 	private int exceptProductQuantity;
 	//产品克重
 	private double kezhong;
+	private String pictureName;
+	
 	//交货日期
 	private Date deadlineTime;
+	
 	//机器针型
 	private String machineZhenXing;
+	
 	//备注
-	private String note;
-	private String pictureName;
+	private String memo;
+	
+	
 	private Date creatTime;
 	//内容json字符串  json数组， json对象内容：色号，色别，尺寸，生产数量，材料名称，材料数量，损耗，总材料
 	private String contentJSONString;
 	
+	
+	
+	
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
@@ -66,11 +85,12 @@ public class ProductionNotification {
 	public void setNotificationNumber(String notificationNumber) {
 		this.notificationNumber = notificationNumber;
 	}
-	public String getCompanyName() {
-		return companyName;
+
+	public int getCompanyId() {
+		return companyId;
 	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
 	}
 	public String getFworderNumber() {
 		return fworderNumber;
@@ -114,12 +134,12 @@ public class ProductionNotification {
 	public void setMachineZhenXing(String machineZhenXing) {
 		this.machineZhenXing = machineZhenXing;
 	}
-	public String getNote() {
-		return note;
-	}
-	public void setNote(String note) {
-		this.note = note;
-	}
+//	public String getNote() {
+//		return note;
+//	}
+//	public void setNote(String note) {
+//		this.note = note;
+//	}
 	public String getPictureName() {
 		return pictureName;
 	}

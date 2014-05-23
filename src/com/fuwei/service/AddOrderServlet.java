@@ -13,7 +13,7 @@ import com.fuwei.entity.FWOrder;
 import com.fuwei.util.StringTODate;
 import com.jspsmart.upload.SmartUpload;
 
-public class AddOrderService extends HttpServlet {
+public class AddOrderServlet extends HttpServlet {
 	SmartUpload smartUpload;
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -30,13 +30,13 @@ public class AddOrderService extends HttpServlet {
 				Date orderTime=StringTODate.changeStringTODate(orderTimeString);
 				String salesMan=req.getParameter("salesMan");
 				String developer=req.getParameter("developer");
-				String note=req.getParameter("note");
+				String memo=req.getParameter("memo");
 				FWOrder order=new FWOrder();
 //				order.setCompanyName(companyName);
 //				order.setCompanyOrderNumber(companyOrderNumber);
 //				order.setDeveloper(developer);
 //				order.setFwOrderNumber("");
-//				order.setNote(note);
+//				order.setMemo(memo);
 //				order.setOrderTime(orderTime);
 //				order.setSalesManName(salesMan);
 				FWOrderDAO orderDAO=new FWOrderDAO();

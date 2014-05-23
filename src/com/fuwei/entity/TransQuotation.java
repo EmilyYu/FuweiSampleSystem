@@ -2,13 +2,28 @@ package com.fuwei.entity;
 
 public class TransQuotation {
 	private String pictureName;
-	private String companyName;
-	private String salesManName;
+	private int companyId;
+	private int salesManId;
 	private String fwStyleNumber;
 	private double price;
 	private double kezhong;
 	private int companyPriceID;
 	private int sampleID;
+	
+	
+	
+	public int getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
+	public int getSalesManId() {
+		return salesManId;
+	}
+	public void setSalesManId(int salesManId) {
+		this.salesManId = salesManId;
+	}
 	public int getSampleID() {
 		return sampleID;
 	}
@@ -21,18 +36,18 @@ public class TransQuotation {
 	public void setPictureName(String pictureName) {
 		this.pictureName = pictureName;
 	}
-	public String getCompanyName() {
-		return companyName;
-	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-	public String getSalesManName() {
-		return salesManName;
-	}
-	public void setSalesManName(String salesManName) {
-		this.salesManName = salesManName;
-	}
+//	public String getCompanyName() {
+//		return companyName;
+//	}
+//	public void setCompanyName(String companyName) {
+//		this.companyName = companyName;
+//	}
+//	public String getSalesManName() {
+//		return salesManName;
+//	}
+//	public void setSalesManName(String salesManName) {
+//		this.salesManName = salesManName;
+//	}
 	public String getFwStyleNumber() {
 		return fwStyleNumber;
 	}

@@ -93,12 +93,12 @@
 				</div>-->
 
 		</div>
-		</div>
+		<div style="height: 46px;"></div>
 	</body>
 	<script language="javascript" type="text/javascript">
 $(document).ready(function(){
 	
-	window.onscroll = function(){ 
+/*	window.onscroll = function(){ 
    		var t = document.documentElement.scrollTop || document.body.scrollTop;
    		var ifFixed = true;
   		if(document.documentElement.scrollTop + document.documentElement.clientHeight +t >= document.body.scrollHeight){
@@ -110,7 +110,7 @@ $(document).ready(function(){
         	$("#fixed_head").css("position","relative");
     	} 
 	}
-/*$("#advanced_search").click(function(){
+$("#advanced_search").click(function(){
 	$(".advanced_search_dialog").show();
 	$(".background").show();
 	return false;
@@ -193,8 +193,8 @@ $(document).ready(function(){
 	        result = result.value;
 	        for(var i = 0 ; i<result.length;++i){
 	            var li = document.createElement("li");
-	            $(li).text(result[i]);
-	            $(li).attr("value",result[i]);
+	            $(li).text(result[i].name);
+	            $(li).attr("value",result[i].name);
 	            frag.appendChild(li);
 	        }
 	        

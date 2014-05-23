@@ -5,36 +5,55 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+/*未核算样品*/
 @Entity
 public class UnPricedSample {
 	private int id;
 	private String picturePath;
-	private String material;
-	private double weight;
+	private String material;//材料
+	private double weight;//克重
 	private String size;
 	private Date date;
 	private String productNumber;
-	private String developer;
+	private int developerId;
 	private String machine;
-	private String note;
-	public String getNote() {
-		return note;
+	private String memo;
+	
+	
+	public String getMemo() {
+		return memo;
 	}
-	public void setNote(String note) {
-		this.note = note;
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
+	//	public String getNote() {
+//		return note;
+//	}
+//	public void setNote(String note) {
+//		this.note = note;
+//	}
 	public String getMachine() {
 		return machine;
 	}
 	public void setMachine(String machine) {
 		this.machine = machine;
 	}
-	public String getDeveloper() {
-		return developer;
+	
+	
+	
+	public int getDeveloperId() {
+		return developerId;
 	}
-	public void setDeveloper(String developer) {
-		this.developer = developer;
+	public void setDeveloperId(int developerId) {
+		this.developerId = developerId;
 	}
+	
+	//	public String getDeveloper() {
+//		return developer;
+//	}
+//	public void setDeveloper(String developer) {
+//		this.developer = developer;
+//	}
 	public String getProductNumber() {
 		return productNumber;
 	}

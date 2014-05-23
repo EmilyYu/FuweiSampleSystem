@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/*等待报价类*/
 @Entity
 public class Quotation {
 	private int id;

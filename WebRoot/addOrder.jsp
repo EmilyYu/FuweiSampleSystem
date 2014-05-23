@@ -12,8 +12,8 @@
 	+ request.getServerName() + ":" + request.getServerPort()
 	+ path + "/";
 	
-	List<Company> companyNameList = FuweiSystemData.getCompanyNameList();
-	HashMap<String, List<String>> SalesNameByCompanyNameList = FuweiSystemData.getSalesNameByCompanyName();
+	List<Company> companyNameList = FuweiSystemData.getCompanyList();
+	HashMap<String, List<CompanySalesMan>> SalesNameByCompanyNameList = FuweiSystemData.getSalesNameByCompany();
 	JSONObject jObject = new JSONObject();
 	jObject.put("SalesNameByCompanyName", SalesNameByCompanyNameList);
 	String SalesNameByCompanyName = jObject.toString();
@@ -21,7 +21,7 @@
 	
 	//获取当前信息
 	FWOrder order = (FWOrder)request.getAttribute("order");
-	QuotationList quote = order.getQuote();
+	QuotationList quote = order==null?null: order.getQuote();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

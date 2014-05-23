@@ -17,28 +17,42 @@ public class Sample {
 	private Date date;
 	private double cost;
 	private String productNumber;
-	private String developer;
+	private int developerId;
 	private String machine;
-	private String note;
+	private String memo;
 	
-	public String getNote() {
-		return note;
+	
+	
+	public int getDeveloperId() {
+		return developerId;
 	}
-	public void setNote(String note) {
-		this.note = note;
+	public void setDeveloperId(int developerId) {
+		this.developerId = developerId;
 	}
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+	//	public String getNote() {
+//		return note;
+//	}
+//	public void setNote(String note) {
+//		this.note = note;
+//	}
 	public String getMachine() {
 		return machine;
 	}
 	public void setMachine(String machine) {
 		this.machine = machine;
 	}
-	public String getDeveloper() {
-		return developer;
-	}
-	public void setDeveloper(String developer) {
-		this.developer = developer;
-	}
+//	public String getDeveloper() {
+//		return developer;
+//	}
+//	public void setDeveloper(String developer) {
+//		this.developer = developer;
+//	}
 	public String getProductNumber() {
 		return productNumber;
 	}

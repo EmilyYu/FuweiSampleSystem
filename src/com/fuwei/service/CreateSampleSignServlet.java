@@ -61,7 +61,7 @@ public class CreateSampleSignServlet extends HttpServlet {
 				Sample sample=sampleDAO.getSample(id);
 				UnPricedSample unPricedSample=new UnPricedSample();
 				unPricedSample.setDate(sample.getDate());
-				unPricedSample.setDeveloper(sample.getDeveloper());
+				unPricedSample.setDeveloperId(sample.getDeveloperId());
 				unPricedSample.setMachine(sample.getMachine());
 				unPricedSample.setMaterial(sample.getMaterial());
 				unPricedSample.setProductNumber(sample.getProductNumber());

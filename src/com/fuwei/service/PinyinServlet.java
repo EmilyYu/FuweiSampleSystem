@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fuwei.entity.Company;
+import com.fuwei.entity.CompanySalesMan;
+import com.fuwei.entity.Developer;
 import com.fuwei.util.FuweiSystemData;
 
 import net.sf.json.JSONObject;
@@ -35,7 +38,7 @@ public class PinyinServlet extends HttpServlet {
 			break;
 		case FuweiSystemData.BASE_COMPANY: {
 			if (FuweiSystemData.getCompanyNameSpell().containsKey(searchQuery)) {
-				List<String> values = FuweiSystemData.getCompanyNameSpell().get(
+				List<Company> values = FuweiSystemData.getCompanyNameSpell().get(
 						searchQuery);
 				PrintWriter printWriter = resp.getWriter();
 				JSONObject jsonObject = new JSONObject();
@@ -50,7 +53,7 @@ public class PinyinServlet extends HttpServlet {
 			break;
 		case FuweiSystemData.BASE_DEVELOPER:{
 			if(FuweiSystemData.getDeveloperSpellDate().containsKey(searchQuery)){
-				List<String> values=FuweiSystemData.getDeveloperSpellDate().get(searchQuery);
+				List<Developer> values=FuweiSystemData.getDeveloperSpellDate().get(searchQuery);
 				PrintWriter printWriter = resp.getWriter();
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("value", values);
@@ -65,7 +68,7 @@ public class PinyinServlet extends HttpServlet {
 			break;
 		case FuweiSystemData.BASE_COMPANY_SALESMAN:{
 			if(FuweiSystemData.getSalesManSpell().containsKey(searchQuery)){
-				List<String> values=FuweiSystemData.getSalesManSpell().get(searchQuery);
+				List<CompanySalesMan> values=FuweiSystemData.getSalesManSpell().get(searchQuery);
 				PrintWriter printWriter = resp.getWriter();
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("value", values);

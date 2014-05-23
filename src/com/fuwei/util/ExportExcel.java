@@ -257,13 +257,13 @@ public class ExportExcel {
 			int index = 0;
 			int number = 0;
 			for (UnPricedSample unPricedSample : unpPricedSample) {
-				if(unPricedSample.getNote().length()>1){
+				if(unPricedSample.getMemo().length()>1){
 					switch (Integer.valueOf(unPricedSample.getMaterial().length()) / 9) {
 					case 0: {
 						for (int i = index; i < 16 + index; i++) {
 							sheet.setRowView(i, 290);
 						}
-						switch (Integer.valueOf(unPricedSample.getNote().length()) / 9) {
+						switch (Integer.valueOf(unPricedSample.getMemo().length()) / 9) {
 						case 0: {
 							sheet.setRowView(0, 340);
 							sheet.setRowView(2, 200);
@@ -282,7 +282,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 3 + number, "打样:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 3 + number,
-									unPricedSample.getDeveloper(), content_center));
+									FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 							sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 									content_center2));
@@ -314,7 +314,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 15 + number, "备注:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 15 + number,
-									unPricedSample.getNote(), content_center));
+									unPricedSample.getMemo(), content_center));
 						}
 							break;
 						case 1: {
@@ -335,7 +335,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 3 + number, "打样:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 3 + number,
-									unPricedSample.getDeveloper(), content_center));
+									FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 							sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 									content_center2));
@@ -367,11 +367,11 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 15 + number, "备注:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 15 + number,
-									unPricedSample.getNote().substring(0, 8),
+									unPricedSample.getMemo().substring(0, 8),
 									content_center));
 							sheet.addCell(new Label(1, index + 16 + number,
-									unPricedSample.getNote().substring(8,
-											unPricedSample.getNote().length()),
+									unPricedSample.getMemo().substring(8,
+											unPricedSample.getMemo().length()),
 									content_center));
 						}
 
@@ -394,7 +394,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 3 + number, "打样:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 3 + number,
-									unPricedSample.getDeveloper(), content_center));
+									FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 							sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 									content_center2));
@@ -426,14 +426,14 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 15 + number, "备注:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 15 + number,
-									unPricedSample.getNote().substring(0, 8),
+									unPricedSample.getMemo().substring(0, 8),
 									content_center));
 							sheet.addCell(new Label(1, index + 16 + number,
-									unPricedSample.getNote().substring(8, 16),
+									unPricedSample.getMemo().substring(8, 16),
 									content_center));
 							sheet.addCell(new Label(1, index + 17 + number,
-									unPricedSample.getNote().substring(16,
-											unPricedSample.getNote().length()),
+									unPricedSample.getMemo().substring(16,
+											unPricedSample.getMemo().length()),
 									content_center));
 						}
 
@@ -451,7 +451,7 @@ public class ExportExcel {
 							sheet.setRowView(i, 290);
 						}
 
-						switch (Integer.valueOf(unPricedSample.getNote().length()) / 9) {
+						switch (Integer.valueOf(unPricedSample.getMemo().length()) / 9) {
 						case 0: {
 							sheet.setRowView(0, 200);
 							sheet.setRowView(2, 200);
@@ -470,7 +470,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 3 + number, "打样:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 3 + number,
-									unPricedSample.getDeveloper(), content_center));
+									FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 							sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 									content_center2));
@@ -507,7 +507,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 16 + number, "备注:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 16 + number,
-									unPricedSample.getNote(), content_center));
+									unPricedSample.getMemo(), content_center));
 						}
 
 							break;
@@ -530,7 +530,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 3 + number, "打样:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 3 + number,
-									unPricedSample.getDeveloper(), content_center));
+									FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 							sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 									content_center2));
@@ -567,11 +567,11 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 16 + number, "备注:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 16 + number,
-									unPricedSample.getNote().substring(0, 8),
+									unPricedSample.getMemo().substring(0, 8),
 									content_center));
 							sheet.addCell(new Label(1, index + 17 + number,
-									unPricedSample.getNote().substring(8,
-											unPricedSample.getNote().length()),
+									unPricedSample.getMemo().substring(8,
+											unPricedSample.getMemo().length()),
 									content_center));
 						}
 
@@ -594,7 +594,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 3 + number, "打样:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 3 + number,
-									unPricedSample.getDeveloper(), content_center));
+									FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 							sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 									content_center2));
@@ -631,14 +631,14 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 16 + number, "备注:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 16 + number,
-									unPricedSample.getNote().substring(0, 8),
+									unPricedSample.getMemo().substring(0, 8),
 									content_center));
 							sheet.addCell(new Label(1, index + 17 + number,
-									unPricedSample.getNote().substring(8, 16),
+									unPricedSample.getMemo().substring(8, 16),
 									content_center));
 							sheet.addCell(new Label(1, index + 18 + number,
-									unPricedSample.getNote().substring(16,
-											unPricedSample.getNote().length()),
+									unPricedSample.getMemo().substring(16,
+											unPricedSample.getMemo().length()),
 									content_center));
 
 						}
@@ -655,7 +655,7 @@ public class ExportExcel {
 						for (int i = index; i < 16 + index; i++) {
 							sheet.setRowView(i, 290);
 						}
-						switch (Integer.valueOf(unPricedSample.getNote().length()) / 9) {
+						switch (Integer.valueOf(unPricedSample.getMemo().length()) / 9) {
 						case 0:{
 							sheet.setRowView(0, 200);
 							sheet.setRowView(2, 170);
@@ -673,7 +673,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 3 + number, "打样:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 3 + number,
-									unPricedSample.getDeveloper(), content_center));
+									FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 							sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 									content_center2));
@@ -711,7 +711,7 @@ public class ExportExcel {
 							
 							sheet.addCell(new Label(0, index + 17 + number, "备注:",
 									content_center2));
-							sheet.addCell(new Label(1, index + 17 + number,unPricedSample.getNote(), content_center));
+							sheet.addCell(new Label(1, index + 17 + number,unPricedSample.getMemo(), content_center));
 						}
 							break;
 
@@ -732,7 +732,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 3 + number, "打样:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 3 + number,
-									unPricedSample.getDeveloper(), content_center));
+									FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 							sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 									content_center2));
@@ -770,8 +770,8 @@ public class ExportExcel {
 							
 							sheet.addCell(new Label(0, index + 17 + number, "备注:",
 									content_center2));
-							sheet.addCell(new Label(1, index + 17 + number,unPricedSample.getNote().substring(0, 8), content_center));
-							sheet.addCell(new Label(1, index + 18 + number,unPricedSample.getNote().substring(8, unPricedSample.getNote().length()), content_center));
+							sheet.addCell(new Label(1, index + 17 + number,unPricedSample.getMemo().substring(0, 8), content_center));
+							sheet.addCell(new Label(1, index + 18 + number,unPricedSample.getMemo().substring(8, unPricedSample.getMemo().length()), content_center));
 						}
 							break;
 						case 2:{
@@ -791,7 +791,7 @@ public class ExportExcel {
 							sheet.addCell(new Label(0, index + 3 + number, "打样:",
 									content_center2));
 							sheet.addCell(new Label(1, index + 3 + number,
-									unPricedSample.getDeveloper(), content_center));
+									FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 							sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 									content_center2));
@@ -829,9 +829,9 @@ public class ExportExcel {
 							
 							sheet.addCell(new Label(0, index + 17 + number, "备注:",
 									content_center2));
-							sheet.addCell(new Label(1, index + 17 + number,unPricedSample.getNote().substring(0, 8), content_center));
-							sheet.addCell(new Label(1, index + 18 + number,unPricedSample.getNote().substring(8, 16), content_center));
-							sheet.addCell(new Label(1, index + 19 + number,unPricedSample.getNote().substring(16, unPricedSample.getNote().length()), content_center));
+							sheet.addCell(new Label(1, index + 17 + number,unPricedSample.getMemo().substring(0, 8), content_center));
+							sheet.addCell(new Label(1, index + 18 + number,unPricedSample.getMemo().substring(8, 16), content_center));
+							sheet.addCell(new Label(1, index + 19 + number,unPricedSample.getMemo().substring(16, unPricedSample.getMemo().length()), content_center));
 
 						}
 
@@ -856,7 +856,7 @@ public class ExportExcel {
 						sheet.addCell(new Label(0, index + 3 + number, "打样:",
 								content_center2));
 						sheet.addCell(new Label(1, index + 3 + number,
-								unPricedSample.getDeveloper(), content_center));
+								FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 
 						sheet.addCell(new Label(0, index + 5 + number, "尺寸:",
 								content_center2));
@@ -896,7 +896,7 @@ public class ExportExcel {
 						sheet.addCell(new Label(1, index+1+number, unPricedSample.getProductNumber(), content_center));
 						
 						sheet.addCell(new Label(0, index+3+number, "打样:", content_center2));
-						sheet.addCell(new Label(1, index+3+number, unPricedSample.getDeveloper(), content_center));
+						sheet.addCell(new Label(1, index+3+number, FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 						
 						sheet.addCell(new Label(0, index+5+number, "尺寸:", content_center2));
 						sheet.addCell(new Label(1, index+5+number, unPricedSample.getSize(), content_center));
@@ -923,7 +923,7 @@ public class ExportExcel {
 						sheet.addCell(new Label(1, index+1+number, unPricedSample.getProductNumber(), content_center));
 						
 						sheet.addCell(new Label(0, index+3+number, "打样:", content_center2));
-						sheet.addCell(new Label(1, index+3+number, unPricedSample.getDeveloper(), content_center));
+						sheet.addCell(new Label(1, index+3+number,FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 						
 						sheet.addCell(new Label(0, index+5+number, "尺寸:", content_center2));
 						sheet.addCell(new Label(1, index+5+number, unPricedSample.getSize(), content_center));
@@ -953,7 +953,7 @@ public class ExportExcel {
 						sheet.addCell(new Label(1, index+1+number, unPricedSample.getProductNumber(), content_center));
 						
 						sheet.addCell(new Label(0, index+3+number, "打样:", content_center2));
-						sheet.addCell(new Label(1, index+3+number, unPricedSample.getDeveloper(), content_center));
+						sheet.addCell(new Label(1, index+3+number, FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 						
 						sheet.addCell(new Label(0, index+5+number, "尺寸:", content_center2));
 						sheet.addCell(new Label(1, index+5+number, unPricedSample.getSize(), content_center));
@@ -984,7 +984,7 @@ public class ExportExcel {
 						sheet.addCell(new Label(1, index+1+number, unPricedSample.getProductNumber(), content_center));
 						
 						sheet.addCell(new Label(0, index+3+number, "打样:", content_center2));
-						sheet.addCell(new Label(1, index+3+number, unPricedSample.getDeveloper(), content_center));
+						sheet.addCell(new Label(1, index+3+number,FuweiSystemData.getDeveloperById(unPricedSample.getDeveloperId()).getName(), content_center));
 						
 						sheet.addCell(new Label(0, index+5+number, "尺寸:", content_center2));
 						sheet.addCell(new Label(1, index+5+number, unPricedSample.getSize(), content_center));
@@ -1167,14 +1167,14 @@ public class ExportExcel {
 			sheet.addCell(new Label(0, 10, "备  注", sample_detail_content_center));
 			
 			sheet.addCell(new Label(1, 2, sample.getProductNumber(), sample_detail_content_center));
-			sheet.addCell(new Label(1, 3, sample.getDeveloper(), sample_detail_content_center));
+			sheet.addCell(new Label(1, 3, FuweiSystemData.getDeveloperById(sample.getDeveloperId()).getName(), sample_detail_content_center));
 			sheet.addCell(new Label(1, 4, sample.getSize(), sample_detail_content_center));
 			sheet.addCell(new Label(1, 5, sample.getWeight()+"  克", sample_detail_content_center));
 			sheet.addCell(new Label(1, 6, sample.getMaterial(), sample_detail_content_center));
 			sheet.addCell(new Label(1, 7, sample.getMachine(), sample_detail_content_center));
 			sheet.addCell(new Label(1, 8, DateFormateUtil.formateDate(sample.getDate()), sample_detail_content_center));
 			sheet.addCell(new Label(1, 9, sample.getCost()+"  元", sample_detail_content_center));
-			sheet.addCell(new Label(1, 10, sample.getNote(), sample_detail_content_center));
+			sheet.addCell(new Label(1, 10, sample.getMemo(), sample_detail_content_center));
 			
 			sheet.addCell(new Label(6, 1,"公司信息",sample_content_center));
 			sheet.addCell(new Label(6, 2, "公司名称", sample_detail_content_center));
@@ -1184,12 +1184,12 @@ public class ExportExcel {
 			sheet.addCell(new Label(6, 6, "报价时间", sample_detail_content_center));
 			sheet.addCell(new Label(6, 7, "备注", sample_detail_content_center));
 			
-			sheet.addCell(new Label(7, 2, companyPrice.getCompanyName(), sample_detail_content_center));
+			sheet.addCell(new Label(7, 2, FuweiSystemData.getCompanyNameById(companyPrice.getCompanyId()) , sample_detail_content_center));
 			sheet.addCell(new Label(7, 3, companyPrice.getProductName(), sample_detail_content_center));
-			sheet.addCell(new Label(7, 4, companyPrice.getSalesMan(), sample_detail_content_center));
+			sheet.addCell(new Label(7, 4, FuweiSystemData.getSalesManNameById(companyPrice.getSalesManId()) , sample_detail_content_center));
 			sheet.addCell(new Label(7, 5, companyPrice.getPrice()+" 元", sample_detail_content_center));
 			sheet.addCell(new Label(7, 6, DateFormateUtil.formateDate(companyPrice.getTime()), sample_detail_content_center));
-			sheet.addCell(new Label(7, 7, companyPrice.getNote(), sample_detail_content_center));	
+			sheet.addCell(new Label(7, 7, companyPrice.getMemo(), sample_detail_content_center));	
 			/** **********将以上缓存中的内容写到EXCEL文件中******** */
 			workbook.write();
 			/** *********关闭文件************* */
@@ -1422,7 +1422,7 @@ public class ExportExcel {
 			sheet.addCell(new Label(9,4,"机器针型",content_center4));
 			
 			//第一行数据
-			sheet.addCell(new Label(0,5,productionNotification.getCompanyName(),content_center4));
+			sheet.addCell(new Label(0,5, FuweiSystemData.getCompanyById(productionNotification.getCompanyId()).getName() ,content_center4));
 			sheet.addCell(new Label(1,5,productionNotification.getFworderNumber(),content_center4));
 			sheet.addCell(new Label(3,5,productionNotification.getStyleNumber(),content_center4));
 			
@@ -1564,7 +1564,7 @@ public class ExportExcel {
 			content_center5.setWrap(true); // 文字是否换行
 			sheet.addCell(new Label(3,15,"一：加工方必须先到打样间封样，确认后再进行大货生产， 否则后果由加工方承担\n二：加工方务必在交货期限内保质保量的完成大货生产任务",content_center5));
 			
-			sheet.addCell(new Label(7,15,productionNotification.getNote(),content_center4));
+			sheet.addCell(new Label(7,15,productionNotification.getMemo(),content_center4));
 			
 			sheet.addCell(new Label(0,15,"",content_center4));
 			File pictureFile = new File(picturePath+productionNotification.getPictureName());

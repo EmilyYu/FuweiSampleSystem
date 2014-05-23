@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-import com.fuwei.DAO.CompanyNameDAO;
+import com.fuwei.DAO.CompanyDAO;
 import com.fuwei.DAO.DeveloperDAO;
 import com.fuwei.DAO.GongXuDAO;
 import com.fuwei.DAO.SalesmanDAO;
@@ -16,21 +16,25 @@ import com.fuwei.entity.GongXu;
 
 public class InitSystemDataUtil {
 	
-	
-	public static HashMap<String, List<String>> initCompanySalesmanSpell(){
+	public static List<CompanySalesMan> initSalesmanList(){
+		SalesmanDAO salesmanDAO=new SalesmanDAO();
+		List<CompanySalesMan> saleList=(List<CompanySalesMan>)salesmanDAO.getAllSalesMan();
+		return saleList;
+	}
+	public static HashMap<String, List<CompanySalesMan>> initCompanySalesmanSpell(){
 		System.out.println("初始化Salesman数据开始");
 		SalesmanDAO salesmanDAO=new SalesmanDAO();
-		List<CompanySalesMan> companySalesMans=(List<CompanySalesMan>)salesmanDAO.getAllSalesManName();
-		HashMap<String, List<String>> hashMap=new HashMap<String, List<String>>();
+		List<CompanySalesMan> companySalesMans=(List<CompanySalesMan>)salesmanDAO.getAllSalesMan();
+		HashMap<String, List<CompanySalesMan>> hashMap=new HashMap<String, List<CompanySalesMan>>();
 		for (CompanySalesMan companySalesMan : companySalesMans) {
 			String jianChen=companySalesMan.getJianChen();
 			for (int i = 1; i <=jianChen.length(); i++) {
 				String subString=jianChen.substring(0, i);
 				if(hashMap.containsKey(subString)){
-					hashMap.get(subString).add(companySalesMan.getSalesManName());
+					hashMap.get(subString).add(companySalesMan);
 				}else {
-					List<String> nameList=new ArrayList<String>();
-					nameList.add(companySalesMan.getSalesManName());
+					List<CompanySalesMan> nameList=new ArrayList<CompanySalesMan>();
+					nameList.add(companySalesMan);
 					hashMap.put(subString, nameList);
 				}
 			}
@@ -42,9 +46,9 @@ public class InitSystemDataUtil {
 		for (String string : keySet) {
 			System.out.println("==================================");
 			System.out.println("key:"+string);
-			List<String> stringList=hashMap.get(string);
+			List<CompanySalesMan> stringList=hashMap.get(string);
 			for (int i = 0; i < stringList.size(); i++) {
-				System.out.print(stringList.get(i)+"  ");
+				System.out.print(stringList.get(i).toString()+"  ");
 			}
 			System.out.println("\n");
 		}
@@ -53,28 +57,29 @@ public class InitSystemDataUtil {
 	}
 	
 	
-	public  static HashMap<String, List<String>> initSalesNameByCompanyName(){
+	public  static HashMap<String, List<CompanySalesMan>> initSalesmanByCompany(){
 		System.out.println("初始化salesMan数据开始");
 		SalesmanDAO salesmanDAO=new SalesmanDAO();
-		List<CompanySalesMan> salesMan=(List<CompanySalesMan>)salesmanDAO.getAllSalesManName();
-		HashMap<String,List<String>> hashSet=new HashMap<String,List<String>>();
+		List<CompanySalesMan> salesMan=(List<CompanySalesMan>)salesmanDAO.getAllSalesMan();
+		HashMap<String,List<CompanySalesMan>> hashSet=new HashMap<String,List<CompanySalesMan>>();
 		for (CompanySalesMan companySalesMan : salesMan) {
-			if(hashSet.containsKey(companySalesMan.getCompanyName())){
-				hashSet.get(companySalesMan.getCompanyName()).add(companySalesMan.getSalesManName());
+			String companyId = String.valueOf(companySalesMan.getCompanyId());
+			if(hashSet.containsKey(companyId)){
+				hashSet.get(companyId).add(companySalesMan);
 			}else {
-				List<String> listString=new ArrayList<String>();
-				listString.add(companySalesMan.getSalesManName());
-				hashSet.put(companySalesMan.getCompanyName(), listString);
+				List<CompanySalesMan> listString=new ArrayList<CompanySalesMan>();
+				listString.add(companySalesMan);
+				hashSet.put(companyId, listString);
 			}
 		}
 		
 		Set<String> keySet=hashSet.keySet();
-		for (String string : keySet) {
+		for (String key : keySet) {
 			System.out.println("==================================");
-			System.out.println("key:"+string);
-			List<String> stringList=hashSet.get(string);
+			System.out.println("key:"+key);
+			List<CompanySalesMan> stringList=hashSet.get(key);
 			for (int i = 0; i < stringList.size(); i++) {
-				System.out.print(stringList.get(i)+"  ");
+				System.out.print(stringList.get(i).toString()+"  ");
 			}
 			System.out.println("\n");
 		}
@@ -82,22 +87,22 @@ public class InitSystemDataUtil {
 		return hashSet;
 	}
 	
-	public static HashMap<String, List<String>> initDeveloperSpell(){
+	public static HashMap<String, List<Developer>> initDeveloperSpell(){
 		System.out.println("初始化Developer数据开始");
 		DeveloperDAO developerDAO=new DeveloperDAO();
 		List<Developer> developers=(List<Developer>)developerDAO.getAllDeveloper();
 		System.out.println("developers size:"+developers.size());
-		HashMap<String, List<String>> hashMap=new HashMap<String, List<String>>();
+		HashMap<String, List<Developer>> hashMap=new HashMap<String, List<Developer>>();
 		for (Developer developer : developers) {
 			String jianChen=developer.getJianChen();
 			for (int i = 1; i <=jianChen.length(); i++) {
 				String subuString=jianChen.substring(0,i);
 				if(hashMap.containsKey(subuString)){
-					hashMap.get(subuString).add(developer.getDeveloperName());
+					hashMap.get(subuString).add(developer);
 				}else {
-					List<String> nameList=new ArrayList<String>();
-					nameList.add(developer.getDeveloperName());
-					hashMap.put(subuString, nameList);
+					List<Developer> developerList=new ArrayList<Developer>();
+					developerList.add(developer);
+					hashMap.put(subuString, developerList);
 				}
 			}
 		}
@@ -107,9 +112,9 @@ public class InitSystemDataUtil {
 		for (String string : keySet) {
 			System.out.println("==================================");
 			System.out.println("key:"+string);
-			List<String> stringList=hashMap.get(string);
+			List<Developer> stringList=hashMap.get(string);
 			for (int i = 0; i < stringList.size(); i++) {
-				System.out.print(stringList.get(i)+"  ");
+				System.out.print(stringList.get(i).toString()+"  ");
 			}
 			System.out.println("\n");
 		}
@@ -117,21 +122,21 @@ public class InitSystemDataUtil {
 		return hashMap;
 	}
 	
-	public static HashMap<String, List<String>> initCompanyNameSpell() {
+	public static HashMap<String, List<Company>> initCompanyNameSpell() {
 		System.out.println("初始化CompanyName数据开始");
-		CompanyNameDAO companyNameDAO=new CompanyNameDAO();
-		List<Company> companyNames=(List<Company>)companyNameDAO.getAllCompanyName();
-		HashMap<String, List<String>> hashMap=new HashMap<String, List<String>>();
-		for (Company companyName : companyNames) {
-			String jianchen=companyName.getJianChen();
+		CompanyDAO companyNameDAO=new CompanyDAO();
+		List<Company> companylist=(List<Company>)companyNameDAO.getAllCompany();
+		HashMap<String, List<Company>> hashMap=new HashMap<String, List<Company>>();
+		for (Company company : companylist) {
+			String jianchen=company.getJianChen();
 			for (int i = 1; i <= jianchen.length(); i++) {
 				String subString=jianchen.substring(0, i);
 				if(hashMap.containsKey(subString)){
-					hashMap.get(subString).add(companyName.getCompanyName());
+					hashMap.get(subString).add(company);
 				}else {
-					List<String> nameList=new ArrayList<String>();
-					nameList.add(companyName.getCompanyName());
-					hashMap.put(subString, nameList);
+					List<Company> company_list=new ArrayList<Company>();
+					company_list.add(company);
+					hashMap.put(subString, company_list);
 				}
 			}
 		}
@@ -140,9 +145,9 @@ public class InitSystemDataUtil {
 		for (String string : keySet) {
 			System.out.println("==================================");
 			System.out.println("key:"+string);
-			List<String> stringList=hashMap.get(string);
+			List<Company> stringList=hashMap.get(string);
 			for (int i = 0; i < stringList.size(); i++) {
-				System.out.print(stringList.get(i)+"  ");
+				System.out.print(stringList.get(i).toString()+"  ");
 			}
 			System.out.println("\n");
 		}
@@ -154,10 +159,17 @@ public class InitSystemDataUtil {
 
 	
 	public static List<Company> initCompanyName(){
-		CompanyNameDAO companyNameDAO=new CompanyNameDAO();
-		List<Company> comList=(List<Company>)companyNameDAO.getAllCompanyName();
+		CompanyDAO companyNameDAO=new CompanyDAO();
+		List<Company> comList=(List<Company>)companyNameDAO.getAllCompany();
 		return comList;
 	}
+	
+	public static List<Company> initCompanyList(){
+		CompanyDAO companyNameDAO=new CompanyDAO();
+		List<Company> comList=(List<Company>)companyNameDAO.getAllCompany();
+		return comList;
+	}
+	
 	
 	public static List<String> initGongXu(){
 		List<String> gongXuString = new ArrayList<String>();
@@ -170,13 +182,19 @@ public class InitSystemDataUtil {
 	}
 	
 	
-	public static List<String> initDeveloperName(){
+//	public static List<String> initDeveloperName(){
+//		DeveloperDAO developerDAO=new DeveloperDAO();
+//		List<Developer> developers=(List<Developer>)developerDAO.getAllDeveloper();
+//		List<String> names=new ArrayList<String>();
+//		for (Developer developer : developers) {
+//			names.add(developer.getName());
+//		}
+//		return names;
+//	}
+	
+	public static List<Developer> initDeveloperList(){
 		DeveloperDAO developerDAO=new DeveloperDAO();
 		List<Developer> developers=(List<Developer>)developerDAO.getAllDeveloper();
-		List<String> names=new ArrayList<String>();
-		for (Developer developer : developers) {
-			names.add(developer.getDeveloperName());
-		}
-		return names;
+		return developers;
 	}
 }

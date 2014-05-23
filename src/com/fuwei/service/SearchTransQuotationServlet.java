@@ -36,15 +36,15 @@ public class SearchTransQuotationServlet extends HttpServlet {
 				TransQuotation transQuotation=new TransQuotation();
 				CompanyPrice companyPrice=companyPriceDAO.getCompanyPrice(quotation.getCompanyPriceID());
 				Sample sample=sampleDAO.getSample(companyPrice.getSampleId());
-				transQuotation.setCompanyName(companyPrice.getCompanyName());
+				transQuotation.setCompanyId(companyPrice.getCompanyId());
 				transQuotation.setCompanyPriceID(companyPrice.getId());
 				transQuotation.setFwStyleNumber(sample.getProductNumber());
 				transQuotation.setKezhong(sample.getWeight());
 				transQuotation.setPictureName("ss"+sample.getPicturePath());
 				transQuotation.setPrice(companyPrice.getPrice());
 				transQuotation.setSampleID(sample.getId());
-				transQuotation.setSalesManName(companyPrice.getSalesMan());
-				String tempString=transQuotation.getCompanyName()+","+transQuotation.getSalesManName();
+				transQuotation.setSalesManId(companyPrice.getSalesManId());
+				String tempString=transQuotation.getCompanyId()+","+transQuotation.getSalesManId();
 				if(hashMap.containsKey(tempString)){
 					hashMap.get(tempString).add(transQuotation);
 				}else {

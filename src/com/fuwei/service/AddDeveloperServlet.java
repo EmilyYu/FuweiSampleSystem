@@ -27,16 +27,16 @@ public class AddDeveloperServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		try {
-			String developer = req.getParameter("manName");
-			String jianChen=HanyuPinyinUtil.getFirstSpellByString(developer);
+			String name = req.getParameter("manName");
+			String jianChen=HanyuPinyinUtil.getFirstSpellByString(name);
 			int authority=Integer.valueOf(req.getParameter("authority"));
 			
-			Developer developerMan = new Developer();
-			developerMan.setDeveloperName(developer);
+			Developer developer = new Developer();
+			developer.setName(name);
 			
-			developerMan.setJianChen(jianChen);
+			developer.setJianChen(jianChen);
 			DeveloperDAO developerDAO = new DeveloperDAO();
-			developerDAO.addDeveloper(developerMan);
+			developerDAO.addDeveloper(developer);
 			
 			FWUserDAO userDAO=new FWUserDAO();
 			String userName=null;
@@ -52,14 +52,14 @@ public class AddDeveloperServlet extends HttpServlet {
 				user.setAuthority(authority);
 				user.setPassword("12345678");
 				user.setUserName(userName);
-				user.setChineseName(developer);
+				user.setChineseName(name);
 				userDAO.addUser(user);
 			}else {
 				FWUser user=new FWUser();
 				user.setAuthority(authority);
 				user.setPassword("12345678");
 				user.setUserName(jianChen);
-				user.setChineseName(developer);
+				user.setChineseName(name);
 				userDAO.addUser(user);
 			}
 			
@@ -88,7 +88,7 @@ public class AddDeveloperServlet extends HttpServlet {
 		public void run() {
 			FuweiSystemData.setDeveloperSpellDate(InitSystemDataUtil
 					.initDeveloperSpell());
-			FuweiSystemData.setDeveloperNameList(InitSystemDataUtil.initDeveloperName());
+			FuweiSystemData.setDeveloperList(InitSystemDataUtil.initDeveloperList());
 		}
 
 	}

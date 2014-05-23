@@ -122,14 +122,14 @@
 														src="image/<%=transQuotation.getPictureName()%>">
 												</a>
 											</td>
-											<td width="10%"><%=transQuotation.getCompanyName() %></td>
-											<td width="10%"><%=transQuotation.getSalesManName() %></td>
+											<td width="10%"><%=FuweiSystemData.getCompanyNameById(transQuotation.getCompanyId()) %></td>
+											<td width="10%"><%=FuweiSystemData.getSalesManNameById(transQuotation.getSalesManId()) %></td>
 											<td width="10%"><%=transQuotation.getFwStyleNumber() %></td>
 											<td width="9%"><%=transQuotation.getPrice() %></td>
 											<td width="9%"><%=transQuotation.getKezhong() %></td>
 											<td width="9%">
 												<a href="sampledetail.do?id=<%=transQuotation.getSampleID() %>">详情</a>
-												| <a href="removeTransQuotation.do?companyPriceId=<%=transQuotation.getSampleID()%>&companyName=<%=transQuotation.getCompanyName() %>&salesName=<%=transQuotation.getSalesManName() %> ">移除</a>
+												| <a href="removeTransQuotation.do?companyPriceId=<%=transQuotation.getSampleID()%>&companyName=<%=FuweiSystemData.getCompanyNameById(transQuotation.getCompanyId()) %>&salesName=<%=FuweiSystemData.getSalesManNameById(transQuotation.getSalesManId()) %> ">移除</a>
 											</td>
 										</tr>
 										<%

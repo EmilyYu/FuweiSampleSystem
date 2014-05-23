@@ -22,19 +22,23 @@ public class InitPinyinDateListener implements ServletContextListener {
 		initDeveloperSpell();
 		initCompanySalesmanSpell();
 		initGongXu();
-		initSalesManByCompanyName();
+		initSalesManByCompany();
 		initCompanyName();
 		initDeveloperName();
 		initUser();
+		initSalesmanList();
 	}
 	
-
+	private void initSalesmanList() {
+		FuweiSystemData.setSalesmanList(InitSystemDataUtil.initSalesmanList());
+	}
+	
 	private void initDeveloperName() {
-		FuweiSystemData.setDeveloperNameList(InitSystemDataUtil.initDeveloperName());
+		FuweiSystemData.setDeveloperList(InitSystemDataUtil.initDeveloperList());
 	}
 
 	private void initCompanyName() {
-		FuweiSystemData.setCompanyNameList(InitSystemDataUtil.initCompanyName());
+		FuweiSystemData.setCompanyList(InitSystemDataUtil.initCompanyList());
 	}
 
 	private void initCompanyNameSpell() {
@@ -52,8 +56,8 @@ public class InitPinyinDateListener implements ServletContextListener {
 				.initCompanySalesmanSpell());
 	}
 	
-	private void initSalesManByCompanyName() {
-		FuweiSystemData.setSalesNameByCompanyName(InitSystemDataUtil.initSalesNameByCompanyName());
+	private void initSalesManByCompany() {
+		FuweiSystemData.setSalesNameByCompany(InitSystemDataUtil.initSalesmanByCompany());
 	}
 
 	private void initGongXu() {

@@ -161,7 +161,7 @@
 								<td><%=sample.getMaterial() %></td>
 								<td><%=sample.getWeight() %></td>
 								<td><%=sample.getSize() %></td>
-								<td><%=sample.getDeveloper() %></td>
+								<td><%=FuweiSystemData.getDeveloperNameById(sample.getDeveloperId())  %></td>
 								<td><%=DateFormateUtil.formateDate(sample.getDate()) %></td>
 								<td>
 									<a href="sampledetail.do?id=<%=sample.getId() %>">详情</a>

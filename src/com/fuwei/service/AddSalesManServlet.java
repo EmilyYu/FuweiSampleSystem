@@ -16,7 +16,7 @@ import com.fuwei.util.FuweiSystemData;
 import com.fuwei.util.HanyuPinyinUtil;
 import com.fuwei.util.InitSystemDataUtil;
 
-public class AddSalesManNameServlet extends HttpServlet {
+public class AddSalesManServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -27,16 +27,16 @@ public class AddSalesManNameServlet extends HttpServlet {
 		resp.setCharacterEncoding("utf-8");
 		try {
 			String salesManName=req.getParameter("salesName");
-			String companyName=req.getParameter("companyName");
+			int companyId=Integer.parseInt(req.getParameter("companyId"));
 			String phone=req.getParameter("phone");
 			CompanySalesMan companySalesMan=new CompanySalesMan();
-			companySalesMan.setCompanyName(companyName);
-			companySalesMan.setSalesManName(salesManName);
+			companySalesMan.setCompanyId(companyId);
+			companySalesMan.setName(salesManName);
 			companySalesMan.setJianChen(HanyuPinyinUtil.getFirstSpellByString(salesManName));
 			companySalesMan.setPhone(phone);
 			
 			SalesmanDAO salesmanDAO=new SalesmanDAO();
-			salesmanDAO.addSample(companySalesMan);
+			salesmanDAO.addSalesman(companySalesMan);
 			new Thread(new threadClass()).start();
 			
 			JSONObject jObject = new JSONObject();
@@ -59,8 +59,9 @@ public class AddSalesManNameServlet extends HttpServlet {
 	
 	class threadClass implements Runnable{
 		public void run() {
+			FuweiSystemData.setSalesmanList(InitSystemDataUtil.initSalesmanList());
 			FuweiSystemData.setSalesManSpell(InitSystemDataUtil.initCompanySalesmanSpell());
-			FuweiSystemData.setSalesNameByCompanyName(InitSystemDataUtil.initSalesNameByCompanyName());
+			FuweiSystemData.setSalesNameByCompany(InitSystemDataUtil.initSalesmanByCompany());
 		}
 		
 	}

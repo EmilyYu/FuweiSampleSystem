@@ -62,8 +62,8 @@ public class AddUnPricedSampleServlet extends HttpServlet {
 			double sampleweight = Double.valueOf(smartUpload.getRequest()
 					.getParameter("kezhong"));
 			String size = smartUpload.getRequest().getParameter("size");
-			String developer = smartUpload.getRequest().getParameter("developer");
-			String note = smartUpload.getRequest().getParameter("note");
+			int developerId =Integer.parseInt(smartUpload.getRequest().getParameter("developerId")) ;
+			String memo = smartUpload.getRequest().getParameter("memo");
 		
 			String pictureName = uploadImage(req, resp);
 			UnPricedSample sample=new UnPricedSample();
@@ -73,12 +73,12 @@ public class AddUnPricedSampleServlet extends HttpServlet {
 			sample.setSize(size);
 			sample.setDate(new Date());
 			sample.setPicturePath(pictureName);
-			sample.setDeveloper(developer);
+			sample.setDeveloperId(developerId);
 			sample.setMachine(machine);
-			if(note==null){
-				sample.setNote("");
+			if(memo==null){
+				sample.setMemo("");
 			}else {
-				sample.setNote(note);
+				sample.setMemo(memo);
 			}
 			
 			addUnPricedSample(sample);

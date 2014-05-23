@@ -6,6 +6,7 @@
 <%@page import="com.fuwei.entity.Company"%>
 <%@page import="net.sf.json.JSONObject"%>
 <%@page import="com.fuwei.util.DateFormateUtil"%>
+<%@page import="com.fuwei.entity.CompanySalesMan"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -15,8 +16,9 @@
 	System.out.println("dsadas2:"+sample.toString());
 	List<CompanyPrice> companyPrices = (List<CompanyPrice>) request.getAttribute("companys");
 	System.out.println("dsadas2:"+companyPrices.size());
-	List<Company> companyList=FuweiSystemData.getCompanyNameList();
-	HashMap<String, List<String>> SalesNameByCompanyNameList = FuweiSystemData.getSalesNameByCompanyName();
+	List<Company> companyList=FuweiSystemData.getCompanyList();
+	HashMap<String, List<CompanySalesMan>> SalesNameByCompanyNameList = FuweiSystemData.getSalesNameByCompany();
+	
 	JSONObject jObject = new JSONObject();
 	jObject.put("SalesNameByCompanyName", SalesNameByCompanyNameList);
 	String SalesNameByCompanyName = jObject.toString();
@@ -76,7 +78,7 @@
 							</div></li>
 						<li><span class="li_name">打样人</span>
 						<div class="li_value_div">
-								<span class="li_value"><%=sample.getDeveloper()%></span>
+								<span class="li_value"><%=sample.getDeveloperId()%></span>
 							</div></li>
 						<li><span class="li_name">尺寸</span>
 						<div class="li_value_div">
@@ -161,10 +163,10 @@
 				%>
 				<tr>
 					<td><%=index+1%></td>
-					<td><%=companyPrice.getCompanyName()%></td>
+					<td><%=FuweiSystemData.getCompanyNameById(companyPrice.getCompanyId()) %></td>
 
 					<td><%=companyPrice.getProductName()%></td>
-					<td><%=companyPrice.getSalesMan()%></td>
+					<td><%=FuweiSystemData.getSalesManNameById(companyPrice.getSalesManId()) %></td>
 					<td>
 						<%
 							if(3!=user.getAuthority()){
@@ -177,7 +179,7 @@
 						%>
 					</td>
 					<td><%=DateFormateUtil.formateDate(companyPrice.getTime())%></td>
-					<td><%=companyPrice.getNote()%></td>
+					<td><%=companyPrice.getMemo()%></td>
 					<%
 						if(1==user.getAuthority()){
 					%>
@@ -217,29 +219,29 @@
 						<input type="hidden" name="sampleid" id="sampleid"
 							value="<%=sample.getId()%>" />
 						<div class="editor-label">
-							<label> 公司名称: </label> <select name="companyName"
-								id="companyName" data='<%=SalesNameByCompanyName%>'
+							<label> 公司名称: </label> <select name="companyId"
+								id="companyId" data='<%=SalesNameByCompanyName%>'
 								class="require">
 								<%
-									for(Company companyName:companyList){
+									for(Company company:companyList){
 								%>
-								<option value="<%=companyName.getCompanyName()%>"><%=companyName.getCompanyName()%></option>
+								<option value="<%=company.getId()%>"><%=company.getName()%></option>
 								<%
 									}
 								%>
 							</select>
 						</div>
 						<div class="editor-label">
-							<label> 业务人员: </label> <select name="salesman" id="salesman"
+							<label> 业务人员: </label> <select name="salesmanId" id="salesmanId"
 								class="require">
 								<%
 									if(companyList!=null & companyList.size()>0){
-															Company companyName = companyList.get(0);
-															List<String> salesNameList = SalesNameByCompanyNameList.get(companyName.getCompanyName());
-															if(salesNameList != null){
-																for(String salesName:salesNameList){
+															Company company = companyList.get(0);
+															List<CompanySalesMan> salesmanList = SalesNameByCompanyNameList.get(String.valueOf(company.getId()));
+															if(salesmanList != null){
+																for(CompanySalesMan salesman:salesmanList){
 								%>
-								<option value="<%=salesName %>"><%=salesName %></option>
+								<option value="<%=salesman.getId() %>"><%=salesman.getName() %></option>
 								<%} }}%>
 							</select>
 						</div>
@@ -253,7 +255,7 @@
 						</div>
 
 						<div class="editor-label">
-							<label> 报价备注: </label> <input type="text" name="note" id="note" />
+							<label> 报价备注: </label> <input type="text" name="memo" id="memo" />
 						</div>
 						<div class="Operatings">
 							<input type="submit" id="Save" class="button_work" value="保存" />
@@ -397,21 +399,21 @@
 	//添加到报价列表
 	
 	//公司-业务员级联
-	$("#companyName").change(function(){
+	$("#companyId").change(function(){
 		var companyName = $(this).val();
 		var SalesNameByCompanyName = $(this).attr("data");
 		SalesNameByCompanyName = $.parseJSON(SalesNameByCompanyName).SalesNameByCompanyName;
 		var SalesNameList = SalesNameByCompanyName[companyName];
-		$("#salesman").empty();
+		$("#salesmanId").empty();
 		var frag = document.createDocumentFragment();
 		for(var i = 0 ; i < SalesNameList.length;++i ){
 			var salesName = SalesNameList[i];
 			var option = document.createElement("option");
-			option.value = salesName;
-			option.text = salesName;
+			option.value = salesName.id;
+			option.text = salesName.name;
 			frag.appendChild(option);
 		}
-		$("#salesman").append(frag);
+		$("#salesmanId").append(frag);
 	});
 	//公司-业务员级联
 	

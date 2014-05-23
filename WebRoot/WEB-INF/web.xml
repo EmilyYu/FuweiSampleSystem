@@ -59,7 +59,7 @@
   
   <servlet>
   <servlet-name>addCompanyName</servlet-name>
-  <servlet-class>com.fuwei.service.AddCompanyNameService</servlet-class>
+  <servlet-class>com.fuwei.service.AddCompanyServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>addCompanyName</servlet-name>
@@ -78,7 +78,7 @@
   
    <servlet>
   <servlet-name>addsalesman</servlet-name>
-  <servlet-class>com.fuwei.service.AddSalesManNameServlet</servlet-class>
+  <servlet-class>com.fuwei.service.AddSalesManServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>addsalesman</servlet-name>
@@ -195,7 +195,7 @@
   
             <servlet>
   <servlet-name>addPirceToSample</servlet-name>
-  <servlet-class>com.fuwei.service.AddPirceToSampleServlet</servlet-class>
+  <servlet-class>com.fuwei.service.AddPriceToSampleServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>addPirceToSample</servlet-name>

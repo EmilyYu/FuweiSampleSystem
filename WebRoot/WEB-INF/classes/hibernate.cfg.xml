@@ -31,7 +31,7 @@
 	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 	<mapping class="com.fuwei.entity.Sample"/>
 	<mapping class="com.fuwei.entity.CompanyPrice"/>
-	<mapping class="com.fuwei.entity.CompanyName"/>
+	<mapping class="com.fuwei.entity.Company"/>
 	<mapping class="com.fuwei.entity.Developer"/>
 	<mapping class="com.fuwei.entity.CompanySalesMan"/>
 	<mapping class="com.fuwei.entity.Quotation"/>

@@ -14,7 +14,7 @@ public class SalesmanDAO {
 	private Session session;
 	public SalesmanDAO(){}
 	
-	public int addSample(CompanySalesMan companySalesMan){
+	public int addSalesman(CompanySalesMan companySalesMan){
 		try {
 			session=HibernateUtil.getSession();
 			Transaction transaction = session.beginTransaction();
@@ -28,7 +28,7 @@ public class SalesmanDAO {
 		}
 	}
 	
-	public Object getAllSalesManName(){
+	public Object getAllSalesMan(){
 		session=HibernateUtil.getSession();
 		String hql="from CompanySalesMan as companysalesman";
 		Query query=session.createQuery(hql);

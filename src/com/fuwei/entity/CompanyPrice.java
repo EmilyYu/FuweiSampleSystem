@@ -7,24 +7,48 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fuwei.util.FuweiSystemData;
+
 /*公司报价*/
 @Entity
 public class CompanyPrice {
 
 	private int id;
 	private String productName;
-	private String companyName;
-	private String salesMan;
+	private int companyId;
+	private int salesManId;
 	private double price;
 	private Date time;
-	private String note;
+	private String memo;
 	private int sampleId;
-	public String getNote() {
-		return note;
+	
+	
+	
+	public int getCompanyId() {
+		return companyId;
 	}
-	public void setNote(String note) {
-		this.note = note;
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
 	}
+	public int getSalesManId() {
+		return salesManId;
+	}
+	public void setSalesManId(int salesManId) {
+		this.salesManId = salesManId;
+	}
+	
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+	//	public String getNote() {
+//		return note;
+//	}
+//	public void setNote(String note) {
+//		this.note = note;
+//	}
 	public int getSampleId() {
 		return sampleId;
 	}
@@ -45,18 +69,18 @@ public class CompanyPrice {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getCompanyName() {
-		return companyName;
-	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-	public String getSalesMan() {
-		return salesMan;
-	}
-	public void setSalesMan(String salesMan) {
-		this.salesMan = salesMan;
-	}
+//	public String getCompanyName() {
+//		return companyName;
+//	}
+//	public void setCompanyName(String companyName) {
+//		this.companyName = companyName;
+//	}
+//	public String getSalesMan() {
+//		return salesMan;
+//	}
+//	public void setSalesMan(String salesMan) {
+//		this.salesMan = salesMan;
+//	}
 	public double getPrice() {
 		return price;
 	}
@@ -73,12 +97,12 @@ public class CompanyPrice {
 	public String toString() {
 		String string="id:"+id+
 		"\nproductName:"+productName+
-		"\ncompanyName:"+companyName+
-		"\nsalesMan:"+salesMan+
+		"\ncompanyName:"+FuweiSystemData.getCompanyNameById(companyId)+
+		"\nsalesMan:"+FuweiSystemData.getSalesManNameById(salesManId)+
 		"\nprice:"+price+
 		"\ntime:"+time+
 		"\nsampleId:"+sampleId+
-		"\nnote:"+note;
+		"\nmemo:"+memo;
 		return string;
 	}
 	
