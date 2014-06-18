@@ -109,6 +109,9 @@
 							<a href="addOrder.jsp"><i class="fa fa-plus"></i>创建订单</a>
 						</li>
 						<li>
+							<a href="orderlist.do"><i class="fa fa-dashboard"></i>订单列表</a>
+						</li>
+						<li>
 							<a href="addproductNotification.jsp"><i class="fa fa-plus"></i>创建生产通知单</a>
 						</li>
 					</ul>
